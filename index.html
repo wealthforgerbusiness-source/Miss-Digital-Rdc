@@ -331,146 +331,101 @@
         </div>
     </footer>
 
-    <!-- LOGIQUE JAVASCRIPT -->
-    <script>
-        // CONFIGURATION
-        const API_URL_VOTE = "/api/vote";
-        const API_URL_GET_VOTES = "/api/votes";
-        const WHATSAPP_NUMBER = "243977092549";
+   <script>
+    // --- CONFIGURATION ---
+    const API_URL_VOTE = "https://miss-digital-rdc.onrender.com/api/vote";
+    const API_URL_GET_VOTES = "https://miss-digital-rdc.onrender.com/api/votes";
+    const WHATSAPP_NUMBER = "243977092549";
 
-        // MENU HAMBURGER AVEC FERMETURE INSTANTANÉE
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+    // --- LOGIQUE DE VOTE ---
+    async function voteCandidate(candidateId) {
+        const button = event.currentTarget;
+        const countElement = document.getElementById(`votes-${candidateId}`);
+        const originalText = button.textContent;
 
-        function toggleMenu() {
-            const isHidden = mobileMenu.classList.contains('hidden');
-            if (isHidden) {
-                mobileMenu.classList.remove('hidden');
-                setTimeout(() => {
-                    mobileMenu.classList.remove('opacity-0', '-translate-y-2');
-                }, 10);
+        // État de chargement
+        button.disabled = true;
+        button.textContent = "Validation...";
+        button.classList.add('opacity-50', 'cursor-not-allowed');
+
+        try {
+            const response = await fetch(API_URL_VOTE, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ candidateId: candidateId })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // Succès
+                if (countElement) countElement.textContent = result.newTotal;
+                openModal("Vote Validé !", "Merci ! Votre soutien a bien été enregistré.", true);
+                button.textContent = "Voté";
             } else {
-                mobileMenu.classList.add('opacity-0', '-translate-y-2');
-                mobileMenu.classList.add('hidden');
-            }
-        }
-
-        menuBtn.addEventListener('click', toggleMenu);
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('opacity-0', '-translate-y-2');
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // RECHERCHE DYNAMIQUE CANDIDATES
-        const searchInput = document.getElementById('search-input');
-        const candidateCards = document.querySelectorAll('.candidate-card');
-
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            
-            candidateCards.forEach(card => {
-                const name = card.getAttribute('data-name').toLowerCase();
-                const number = card.getAttribute('data-number').toLowerCase();
-
-                if (name.includes(query) || number.includes(query)) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
-            });
-        });
-
-        // DEFILEMENT CARROUSEL
-        const track = document.getElementById('carousel-track');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-
-        if(prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', () => track.scrollBy({ left: -340, behavior: 'smooth' }));
-            nextBtn.addEventListener('click', () => track.scrollBy({ left: 340, behavior: 'smooth' }));
-        }
-
-        // REDIRECTION WHATSAPP
-        document.getElementById('whatsapp-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const nom = document.getElementById('user-nom').value.trim();
-            const postnom = document.getElementById('user-postnom').value.trim();
-            const prenom = document.getElementById('user-prenom').value.trim();
-            const age = document.getElementById('user-age').value.trim();
-
-            const textMessage = `Bonjour, je souhaite rejoindre l'aventure Miss Digital RDC. Je m'appelle ${nom} ${postnom} ${prenom} et j'ai ${age} ans.`;
-            const encodedText = encodeURIComponent(textMessage);
-
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedText}`, '_blank');
-        });
-
-        // INITIALISATION DES VOTES (GET)
-        document.addEventListener('DOMContentLoaded', fetchVotes);
-
-        async function fetchVotes() {
-            try {
-                const response = await fetch(API_URL_GET_VOTES);
-                if (response.ok) {
-                    const data = await response.json(); 
-                    Object.keys(data).forEach(id => {
-                        const countElement = document.getElementById(`votes-${id}`);
-                        if (countElement) {
-                            countElement.textContent = data[id];
-                        }
-                    });
-                }
-            } catch (error) {
-                console.warn("Liaison serveur backend en attente.", error);
-            }
-        }
-
-        // LOGIQUE DE VOTE (POST)
-        async function voteCandidate(candidateId) {
-            const button = event.currentTarget;
-            
-            try {
-                button.disabled = true;
-                button.classList.add('opacity-50', 'cursor-not-allowed');
-
-                const response = await fetch(API_URL_VOTE, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ candidateId: candidateId })
-                });
-
-                const result = await response.json();
-
-                if (response.ok && result.success) {
-                    const countElement = document.getElementById(`votes-${candidateId}`);
-                    if (countElement) {
-                        countElement.textContent = result.newTotal;
-                    }
-                    alert("Votre vote a été enregistré avec succès !");
-                } else {
-                    alert(result.message || "Anti-Fraude : Cette adresse IP a déjà voté !");
-                    button.disabled = false;
-                    button.classList.remove('opacity-50', 'cursor-not-allowed');
-                }
-
-            } catch (error) {
-                console.error("Erreur serveur :", error);
-                alert("Impossible de communiquer avec le serveur de vote.");
+                // Erreur serveur (ex: déjà voté)
+                openModal("Vote Refusé", result.message || "Vous avez déjà voté.", false);
                 button.disabled = false;
-                button.classList.remove('opacity-50', 'cursor-not-allowed');
+                button.textContent = originalText;
             }
+        } catch (error) {
+            // Erreur réseau
+            openModal("Erreur", "Connexion impossible au serveur de vote.", false);
+            button.disabled = false;
+            button.textContent = originalText;
+        } finally {
+            button.classList.remove('opacity-50', 'cursor-not-allowed');
         }
-    </script>
-    <!-- Fenêtre Modale Personnalisée -->
-<div id="custom-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
-    <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl">
-        <h3 id="modal-title" class="text-xl font-bold text-gray-800 mb-4">Notification</h3>
+    }
+
+    // --- GESTION DE LA MODALE ---
+    function openModal(title, message, isSuccess) {
+        const modal = document.getElementById('custom-modal');
+        const titleEl = document.getElementById('modal-title');
+        const msgEl = document.getElementById('modal-message');
+        
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        // Applique la couleur (vert si succès, rouge si erreur)
+        titleEl.className = isSuccess ? "text-xl font-bold text-green-600 mb-4" : "text-xl font-bold text-red-600 mb-4";
+        
+        modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+        document.getElementById('custom-modal').classList.add('hidden');
+    }
+
+    // --- INITIALISATION AU CHARGEMENT ---
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const response = await fetch(API_URL_GET_VOTES);
+            if (response.ok) {
+                const data = await response.json();
+                Object.keys(data).forEach(id => {
+                    const el = document.getElementById(`votes-${id}`);
+                    if (el) el.textContent = data[id];
+                });
+            }
+        } catch (err) {
+            console.warn("Impossible de charger les votes initiaux.");
+        }
+    });
+
+    // --- AUTRES LOGIQUES (Menu, WhatsApp, etc.) ---
+    // Ajoute ici ton code existant pour le menu, la recherche et le formulaire WhatsApp...
+</script>
+<!-- FENÊTRE MODALE (À copier juste avant la fermeture de </body>) -->
+<div id="custom-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl transform transition-all">
+        <!-- Titre (sera changé par le JS) -->
+        <h3 id="modal-title" class="text-xl font-bold mb-4">Notification</h3>
+        
+        <!-- Message (sera changé par le JS) -->
         <p id="modal-message" class="text-gray-600 mb-6"></p>
-        <button onclick="closeModal()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition">
+        
+        <!-- Bouton de fermeture -->
+        <button onclick="closeModal()" class="w-full bg-slate-900 text-white font-bold py-3 px-6 rounded-xl transition hover:bg-slate-800">
             OK
         </button>
     </div>
