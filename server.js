@@ -22,15 +22,24 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// 3. Route pour enregistrer un vote
+// Route pour enregistrer un vote
 app.post('/api/vote', async (req, res) => {
     try {
+        // Capture automatique de l'adresse IP de l'utilisateur
+        const userIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        
+        // On prépare les données avec l'IP + l'ID du candidat
+        const payload = {
+            ip: userIp,
+            candidateId: req.body.candidateId
+        };
+
         // Envoi des données vers ton Google Sheet via le script
-        const response = await axios.post(GOOGLE_SCRIPT_URL, req.body);
+        const response = await axios.post(GOOGLE_SCRIPT_URL, payload);
         res.json(response.data);
     } catch (error) {
         console.error("Erreur envoi Google Sheet:", error);
-        res.status(500).json({ success: false, message: "Erreur de connexion à la base de données." });
+        res.status(500).json({ success: false, message: "Erreur serveur." });
     }
 });
 
