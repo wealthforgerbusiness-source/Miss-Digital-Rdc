@@ -1,59 +1,56 @@
-/**
- * SERVEUR MISS DIGITAL RDC - INTÉGRATION GOOGLE SHEETS
- */
-
 const express = require('express');
-const cors = require('cors');
-const axios = require('axios'); // N'oublie pas de faire 'npm install axios'
-const path = require('path');
-
+const fs = require('fs');
 const app = express();
+const cors = require('cors');
+
 app.use(cors());
 app.use(express.json());
 
-// TON URL GOOGLE SCRIPT
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyhVFoTrynnRHkExlBk1zAM6Nayy__wSm03UBwOBr2otPr04GDOzXWfvS2vjnXJFrAS/exec";
+// Fonction pour lire les données
+const readData = () => {
+    return JSON.parse(fs.readFileSync('data.json', 'utf8'));
+};
 
-// 1. Sert tes fichiers web (HTML, CSS, JS) automatiquement
-app.use(express.static(__dirname));
+// Fonction pour sauvegarder les données
+const saveData = (data) => {
+    fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
+};
 
-// 2. Route pour afficher ta page principale
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
+app.post('/api/vote', (req, res) => {
+    const { candidateId } = req.body; // Exemple: "02"
+    
+    // Récupérer l'IP réelle du visiteur
+    const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    
+    const db = readData();
 
-// Route pour enregistrer un vote
-app.post('/api/vote', async (req, res) => {
-    try {
-        // Capture automatique de l'adresse IP de l'utilisateur
-        const userIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-        
-        // On prépare les données avec l'IP + l'ID du candidat
-        const payload = {
-            ip: userIp,
-            candidateId: req.body.candidateId
-        };
-
-        // Envoi des données vers ton Google Sheet via le script
-        const response = await axios.post(GOOGLE_SCRIPT_URL, payload);
-        res.json(response.data);
-    } catch (error) {
-        console.error("Erreur envoi Google Sheet:", error);
-        res.status(500).json({ success: false, message: "Erreur serveur." });
+    // 🔒 ANALYSE : Est-ce que cette IP a déjà voté ?
+    if (db.ips[clientIp]) {
+        return res.status(403).json({ success: false, message: "Vote déjà enregistré pour cette IP." });
     }
-});
 
-// 4. Route pour récupérer les votes actuels
-app.get('/api/votes', async (req, res) => {
-    try {
-        const response = await axios.get(GOOGLE_SCRIPT_URL);
-        res.json(response.data);
-    } catch (error) {
-        res.status(500).json({ success: false, message: "Impossible de récupérer les votes." });
+    // 🚀 AUTOMATISATION : Calcul du score
+    // Si la candidate n'existe pas encore, on l'initialise à 0
+    if (!db.votes[candidateId]) {
+        db.votes[candidateId] = 0;
     }
+    
+    // On ajoute +1 au score de la candidate spécifique (ex: "02")
+    db.votes[candidateId] += 1;
+
+    // On enregistre l'IP pour interdire tout autre vote
+    db.ips[clientIp] = true;
+
+    // On sauve le tout
+    saveData(db);
+
+    res.json({ success: true, newTotal: db.votes[candidateId] });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`✅ Serveur Miss Digital RDC actif sur le port ${PORT}`);
+// Route pour consulter les scores
+app.get('/api/votes', (req, res) => {
+    const db = readData();
+    res.json(db.votes);
 });
+
+app.listen(3000, () => console.log("Serveur actif."));
