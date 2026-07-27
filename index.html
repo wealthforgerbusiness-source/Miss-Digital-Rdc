@@ -465,5 +465,15 @@
             }
         }
     </script>
+    <!-- Fenêtre Modale Personnalisée -->
+<div id="custom-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
+    <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl">
+        <h3 id="modal-title" class="text-xl font-bold text-gray-800 mb-4">Notification</h3>
+        <p id="modal-message" class="text-gray-600 mb-6"></p>
+        <button onclick="closeModal()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition">
+            OK
+        </button>
+    </div>
+</div>
 </body>
 </html>
