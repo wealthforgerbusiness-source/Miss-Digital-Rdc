@@ -429,9 +429,10 @@ button { font-family: inherit; }
 /* ===================== CONTACT ===================== */
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 18px;
 }
+
 .contact-item {
   display: flex;
   align-items: center;
@@ -443,16 +444,28 @@ button { font-family: inherit; }
   backdrop-filter: blur(10px);
   transition: var(--transition);
   font-size: 0.95rem;
+  min-width: 0; /* important */
 }
+
 .contact-item:hover {
   border-color: rgba(44, 95, 199, 0.6);
   transform: translateY(-4px);
 }
+
 .contact-item i {
   font-size: 1.2rem;
   color: var(--color-royal-light);
   width: 22px;
+  min-width: 22px;
   text-align: center;
+}
+
+/* Gestion du texte long (email, numéro...) */
+.contact-item span,
+.contact-item a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.4;
 }
 
 /* ===================== FOOTER ===================== */
