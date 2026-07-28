@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- ===================== SEO — META PRINCIPAUX ===================== -->
+<title>Miss Digital RDC — Le 1er concours de beauté 100% digital en RDC</title>
+<meta name="description" content="Miss Digital RDC est le premier concours national de beauté 100% digital en République Démocratique du Congo. Découvrez les candidates et votez en ligne gratuitement.">
+<meta name="keywords" content="Miss Digital RDC, concours de beauté RDC, Miss RDC, vote en ligne, candidates RDC, beauté congolaise, digital RDC, Kinshasa, concours national">
+<meta name="author" content="Miss Digital RDC">
+<link rel="canonical" href="https://missdigitalrdc.cd/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0A1633">
+
+<!-- ===================== OPEN GRAPH (Facebook / partage) ===================== -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Miss Digital RDC">
+<meta property="og:title" content="Miss Digital RDC — Le 1er concours de beauté 100% digital en RDC">
+<meta property="og:description" content="Le premier concours de beauté 100% digital en République Démocratique du Congo. Découvrez les candidates et participez au vote officiel en ligne.">
+<meta property="og:image" content="https://missdigitalrdc.cd/assets/logo.jpg">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:url" content="https://missdigitalrdc.cd/">
+<meta property="og:locale" content="fr_CD">
+
+<!-- ===================== TWITTER CARDS ===================== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Miss Digital RDC — Le 1er concours de beauté 100% digital en RDC">
+<meta name="twitter:description" content="Découvrez les candidates du premier concours de beauté 100% digital en RDC et votez gratuitement en ligne.">
+<meta name="twitter:image" content="https://missdigitalrdc.cd/assets/logo.jpg">
+
+<!-- ===================== FAVICONS ===================== -->
+<link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+<link rel="apple-touch-icon" href="assets/logo.jpg">
+
+<!-- ===================== POLICES & ICÔNES ===================== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Fond décoratif "circuit" persistant (voir CSS .bg-circuit) -->
+<div class="bg-circuit" aria-hidden="true"></div>
+
+<!-- ===================== NAVIGATION ===================== -->
+<header class="site-header" id="siteHeader">
+  <nav class="nav container" aria-label="Navigation principale">
+    <a href="#accueil" class="nav-brand">
+      <img src="assets/logo.jpg" alt="Logo Miss Digital RDC" class="nav-logo">
+      <span class="nav-brand-text">Miss Digital <em>RDC</em></span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#accueil" class="nav-link">Accueil</a></li>
+      <li><a href="#apropos" class="nav-link">À propos</a></li>
+      <li><a href="#candidates" class="nav-link">Candidates &amp; Vote</a></li>
+      <li><a href="#resultats" class="nav-link">Résultats</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="accueil">
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <div class="container hero-inner">
+      <!-- Signature visuelle : la couronne-circuit qui se dessine à l'ouverture -->
+      <svg class="crown-signature" id="crownSignature" viewBox="0 0 240 140" width="150" height="88" role="img" aria-label="Emblème couronne digitale Miss Digital RDC">
+        <polyline class="crown-path" points="20,110 20,30 60,80 120,10 180,80 220,30 220,110" />
+        <line class="crown-path crown-base" x1="20" y1="110" x2="220" y2="110" />
+        <circle class="crown-node crown-node--main" cx="20" cy="30" r="7"></circle>
+        <circle class="crown-node crown-node--main" cx="120" cy="10" r="8"></circle>
+        <circle class="crown-node crown-node--main" cx="220" cy="30" r="7"></circle>
+        <circle class="crown-node" cx="60" cy="80" r="5"></circle>
+        <circle class="crown-node" cx="180" cy="80" r="5"></circle>
+      </svg>
+
+      <p class="eyebrow reveal">Le premier concours 100% digital de RDC</p>
+      <h1 class="hero-title reveal">MISS DIGITAL <span>RDC</span></h1>
+      <p class="hero-slogan reveal">Le premier concours de beauté 100&nbsp;% digital en République Démocratique du Congo.</p>
+      <p class="hero-desc reveal">
+        Beauté, élégance, talent, leadership et influence numérique : Miss Digital RDC célèbre
+        les jeunes femmes congolaises qui incarnent la nouvelle génération connectée.
+      </p>
+
+      <div class="hero-actions reveal">
+        <a href="#candidates" class="btn btn-primary">
+          <i class="fa-solid fa-crown" aria-hidden="true"></i> Découvrir les candidates
+        </a>
+        <a href="#candidates" class="btn btn-outline">
+          <i class="fa-solid fa-check-to-slot" aria-hidden="true"></i> Voter maintenant
+        </a>
+      </div>
+    </div>
+
+    <a href="#apropos" class="scroll-cue" aria-label="Défiler vers la section À propos">
+      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <!-- ===================== À PROPOS ===================== -->
+  <section class="section about" id="apropos">
+    <div class="container">
+      <p class="eyebrow reveal">À propos du concours</p>
+      <h2 class="section-title reveal">Un concours national, né du digital</h2>
+      <p class="section-lead reveal">
+        Miss Digital RDC est le tout premier concours national de beauté organisé principalement
+        en ligne en République Démocratique du Congo. Un rendez-vous pensé pour une génération
+        connectée, où le vote du public façonne directement le parcours des candidates.
+      </p>
+
+      <div class="value-grid">
+        <article class="value-card reveal">
+          <i class="fa-solid fa-venus value-icon" aria-hidden="true"></i>
+          <h3>Valorisation de la femme congolaise</h3>
+          <p>Mettre en lumière le parcours, la force et l'élégance des jeunes femmes de la RDC.</p>
+        </article>
+        <article class="value-card reveal">
+          <i class="fa-solid fa-wifi value-icon" aria-hidden="true"></i>
+          <h3>Promotion du numérique</h3>
+          <p>Un concours pensé pour le digital, qui encourage la présence en ligne et les compétences numériques.</p>
+        </article>
+        <article class="value-card reveal">
+          <i class="fa-solid fa-crown value-icon" aria-hidden="true"></i>
+          <h3>Leadership féminin</h3>
+          <p>Révéler des ambassadrices inspirantes, prêtes à porter la voix des femmes congolaises.</p>
+        </article>
+        <article class="value-card reveal">
+          <i class="fa-solid fa-drum value-icon" aria-hidden="true"></i>
+          <h3>Culture congolaise</h3>
+          <p>Un hommage à la richesse culturelle et à l'identité congolaise, célébrée à chaque étape.</p>
+        </article>
+        <article class="value-card reveal">
+          <i class="fa-solid fa-gem value-icon" aria-hidden="true"></i>
+          <h3>Beauté</h3>
+          <p>Une beauté authentique, mise en valeur avec élégance et raffinement.</p>
+        </article>
+        <article class="value-card reveal">
+          <i class="fa-solid fa-star value-icon" aria-hidden="true"></i>
+          <h3>Talents</h3>
+          <p>Un espace d'expression pour les talents artistiques, entrepreneuriaux et créatifs des candidates.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CANDIDATES & VOTE ===================== -->
+  <section class="section candidates" id="candidates">
+    <div class="container">
+      <p class="eyebrow reveal">Candidates &amp; Vote officiel</p>
+      <h2 class="section-title reveal">Découvrez les candidates et votez</h2>
+      <p class="section-lead reveal">
+        Le vote est gratuit et se déroule directement via le formulaire officiel ci-dessous.
+        Une seule voix par personne : merci de respecter l'équité du concours.
+      </p>
+
+      <div class="vote-frame-wrap reveal">
+        <div class="vote-frame-glow" aria-hidden="true"></div>
+        <!--
+          Formulaire officiel de vote (Google Forms).
+          Dimensions imposées par le brief : 640 x 455.
+        -->
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSd1fMJiFg-F_8PpDXO7ryFn2Kam3lZrDi0anIvPQ17klKXZZw/viewform?embedded=true"
+          width="640"
+          height="455"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          class="vote-frame"
+          title="Formulaire officiel de vote Miss Digital RDC"
+          loading="lazy">
+          Chargement…
+        </iframe>
+      </div>
+
+      <p class="vote-note reveal">
+        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+        Chaque vote est vérifié par notre système anti-fraude (contrôle d'adresse IP +
+        limitation Google Forms à une réponse par compte). Voir la note de transparence en bas de page.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== RÉSULTATS ===================== -->
+  <section class="section results" id="resultats">
+    <div class="container">
+      <p class="eyebrow reveal">Résultats officiels</p>
+      <h2 class="section-title reveal">Résultats officiels</h2>
+      <p class="section-lead reveal">
+        Les résultats du concours seront publiés ici après la clôture officielle du vote.
+        Revenez consulter cette page dès l'annonce des finalistes.
+      </p>
+
+      <div class="results-card reveal">
+        <i class="fa-solid fa-hourglass-half results-icon" aria-hidden="true"></i>
+        <p>Les résultats seront publiés après la clôture officielle du concours.</p>
+        <!-- Lien de démonstration : à remplacer par le lien officiel des résultats -->
+        <a href="#" class="btn btn-outline" id="resultsLink">
+          <i class="fa-solid fa-medal" aria-hidden="true"></i> Voir les résultats
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <p class="eyebrow reveal">Nous contacter</p>
+      <h2 class="section-title reveal">Contact</h2>
+      <p class="section-lead reveal">Une question sur le concours ou le vote ? Retrouvez-nous ici.</p>
+
+      <ul class="contact-grid reveal">
+        <li class="contact-item">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <!-- JE VAIS COMPLETE MOI MM : e-mail à renseigner -->
+          <a href="mailto:contact@missdigitalrdc.cd">contact@missdigitalrdc.cd</a>
+        </li>
+        <li class="contact-item">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <!-- JE VAIS COMPLETE MOI MM : téléphone à renseigner -->
+          <a href="tel:+243000000000">+243 000 000 000</a>
+        </li>
+        <li class="contact-item">
+          <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+          <!-- JE VAIS COMPLETE MOI MM : lien Facebook -->
+          <a href="#" target="_blank" rel="noopener">Facebook</a>
+        </li>
+        <li class="contact-item">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+          <!-- JE VAIS COMPLETE MOI MM : lien Instagram -->
+          <a href="#" target="_blank" rel="noopener">Instagram</a>
+        </li>
+        <li class="contact-item">
+          <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+          <!-- JE VAIS COMPLETE MOI MM : lien TikTok -->
+          <a href="#" target="_blank" rel="noopener">TikTok</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="assets/logo.jpg" alt="Logo Miss Digital RDC" class="footer-logo">
+      <div>
+        <p class="footer-title">MISS DIGITAL RDC</p>
+        <p class="footer-tagline">Le premier concours de beauté digital en RDC</p>
+      </div>
+    </div>
+
+    <nav class="footer-links" aria-label="Liens rapides">
+      <p class="footer-heading">Liens rapides</p>
+      <a href="#accueil">Accueil</a>
+      <a href="#apropos">À propos</a>
+      <a href="#candidates">Candidates &amp; Vote</a>
+      <a href="#resultats">Résultats</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <nav class="footer-links" aria-label="Informations légales">
+      <p class="footer-heading">Informations</p>
+      <a href="#">Mentions légales</a>
+      <a href="#">Politique de confidentialité</a>
+    </nav>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>&copy; <span id="copyrightYear"></span> Miss Digital RDC. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
