@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miss Digital RDC — Concours de vote digital</title>
+<meta name="description" content="Concours de vote digital Miss Digital RDC">
+<meta name="theme-color" content="#1a2456">
+
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/icons/android-chrome-192x192.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #1a2456;
+    --navy-deep: #0f1638;
+    --pink: #f2a9c3;
+    --pink-deep: #d9678f;
+    --cream: #fdf7f9;
+    --white: #ffffff;
+    --gold: #c9a227;
+    --ink: #201c2c;
+    --ink-soft: #5a5566;
+    --line: #ecdfe4;
+
+    --font-display: "Fraunces", serif;
+    --font-body: "Manrope", sans-serif;
+
+    --max-w: 1200px;
+    --radius-lg: 28px;
+    --radius-md: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg { display: block; max-width: 100%; }
+
+  a { color: inherit; text-decoration: none; }
+
+  ul { list-style: none; }
+
+  .wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--navy);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  h2 { font-size: clamp(1.8rem, 3.2vw, 2.5rem); margin-bottom: 12px; }
+
+  .section-lede {
+    max-width: 560px;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    margin-bottom: 44px;
+  }
+
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 3px solid var(--navy);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Boutons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.98rem;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-primary {
+    background: var(--pink-deep);
+    color: var(--white);
+  }
+  .btn-primary:hover { background: var(--navy); }
+
+  .btn-outline {
+    background: transparent;
+    border-color: var(--navy);
+    color: var(--navy);
+  }
+  .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+  /* ---------- Header ---------- */
+  header.site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand img { width: 40px; height: 40px; }
+  .brand span {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  nav.main-nav ul {
+    display: flex;
+    gap: 32px;
+  }
+  nav.main-nav a {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--ink);
+    position: relative;
+  }
+  nav.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -6px;
+    width: 0; height: 2px;
+    background: var(--pink-deep);
+    transition: width 0.2s ease;
+  }
+  nav.main-nav a:hover::after { width: 100%; }
+
+  .nav-toggle { display: none; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 88px 0 100px;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.3rem, 5vw, 3.6rem);
+    line-height: 1.08;
+    margin-bottom: 20px;
+  }
+
+  .hero p.subtitle {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .hero-visual {
+    position: relative;
+    height: 420px;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+    filter: blur(0px);
+  }
+  .blob-1 {
+    width: 320px; height: 320px;
+    background: linear-gradient(135deg, var(--pink), var(--pink-deep));
+    top: 10px; right: 10px;
+    animation: morph 12s ease-in-out infinite;
+    opacity: 0.9;
+  }
+  .blob-2 {
+    width: 220px; height: 220px;
+    background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+    bottom: -10px; left: 20px;
+    animation: morph 15s ease-in-out infinite reverse;
+    opacity: 0.85;
+  }
+  .hero-visual svg.crown {
+    position: absolute;
+    top: 40%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes morph {
+    0%, 100% { border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%; }
+    50% { border-radius: 45% 55% 40% 60% / 55% 40% 60% 40%; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-14px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob, .hero-visual svg.crown { animation: none; }
+  }
+
+  /* ---------- Comment ça marche ---------- */
+  .steps {
+    background: var(--white);
+    padding: 96px 0;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    position: relative;
+  }
+
+  .step {
+    text-align: left;
+    padding: 28px 22px;
+    background: var(--cream);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--line);
+  }
+
+  .step .step-icon {
+    width: 46px; height: 46px;
+    margin-bottom: 18px;
+    color: var(--pink-deep);
+  }
+
+  .step .step-num {
+    font-family: var(--font-display);
+    color: var(--pink-deep);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .step h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .step p { color: var(--ink-soft); font-size: 0.92rem; }
+
+  /* ---------- Classement ---------- */
+  .ranking {
+    padding: 96px 0;
+  }
+
+  .placeholder-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+
+  .podium {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: end;
+  }
+
+  .candidate-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    padding: 28px 22px;
+    text-align: center;
+  }
+  .candidate-card.rank-1 {
+    order: 2;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    box-shadow: 0 20px 40px -18px rgba(26, 36, 86, 0.35);
+    border-color: var(--pink);
+  }
+  .candidate-card.rank-2 { order: 1; }
+  .candidate-card.rank-3 { order: 3; }
+
+  .avatar {
+    width: 86px; height: 86px;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--white);
+  }
+  .rank-1 .avatar { background: linear-gradient(135deg, var(--pink-deep), var(--navy)); width: 104px; height: 104px; }
+  .rank-2 .avatar { background: linear-gradient(135deg, var(--navy), var(--navy-deep)); }
+  .rank-3 .avatar { background: linear-gradient(135deg, var(--pink), var(--pink-deep)); }
+
+  .candidate-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+  .candidate-card .rank-label { color: var(--ink-soft); font-size: 0.85rem; margin-bottom: 14px; }
+
+  .vote-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .vote-count { font-weight: 700; color: var(--navy); }
+  .vote-heart {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--pink-deep);
+    color: var(--pink-deep);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .vote-heart:hover { background: var(--pink-deep); color: var(--white); }
+  .vote-heart svg { width: 18px; height: 18px; }
+
+  /* ---------- Pourquoi participer ---------- */
+  .why {
+    background: var(--navy);
+    color: var(--white);
+    padding: 96px 0;
+  }
+  .why h2, .why .section-lede { color: var(--white); }
+  .why .section-lede { color: rgba(255,255,255,0.75); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .prize-figure {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .prize-figure span { font-size: 0.4em; color: rgba(255,255,255,0.7); }
+
+  .why-list li {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  .why-list li:last-child { border-bottom: none; }
+  .why-list svg { width: 22px; height: 22px; color: var(--pink); flex-shrink: 0; margin-top: 3px; }
+
+  /* ---------- FAQ ---------- */
+  .faq {
+    background: var(--white);
+    padding: 96px 0;
+  }
+
+  .faq-list { max-width: 720px; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 20px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 1.02rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--pink-deep);
+    transition: transform 0.2s ease;
+  }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p {
+    margin-top: 12px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Footer ---------- */
+  footer.site-footer {
+    background: var(--navy-deep);
+    color: rgba(255,255,255,0.8);
+    padding: 56px 0 32px;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .footer-contact a {
+    font-weight: 500;
+    color: var(--white);
+  }
+  .footer-social a {
+    display: inline-flex;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+  }
+  .footer-social a:hover { background: var(--pink-deep); }
+  .footer-social svg { width: 18px; height: 18px; color: var(--white); }
+  .footer-copy {
+    padding-top: 24px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1024px) {
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    nav.main-nav ul { gap: 20px; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { height: 280px; order: -1; }
+    .podium { grid-template-columns: 1fr; }
+    .candidate-card.rank-1, .candidate-card.rank-2, .candidate-card.rank-3 { order: initial; padding: 28px 22px; }
+  }
+
+  @media (max-width: 480px) {
+    .header-inner { padding: 14px 16px; }
+    nav.main-nav ul { gap: 14px; }
+    .brand span { font-size: 1rem; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .hero { padding: 56px 0 64px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/index.html" class="brand">
+      <img src="/icons/android-chrome-192x192.png" alt="Logo Miss Digital RDC" width="40" height="40">
+      <span>Miss Digital RDC</span>
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#candidates">Candidates</a></li>
+        <li><a href="#comment-voter">Comment voter</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="accueil">
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <h1>Votez pour la candidate qui vous inspire le plus.</h1>
+        <p class="subtitle">Miss Digital RDC est le concours de beauté 100% digital où le public élit sa candidate favorite par vote payant, en temps réel.</p>
+        <div class="hero-actions">
+          <a href="#candidates" class="btn btn-primary">Voir les candidates</a>
+          <a href="#devenir-candidate" class="btn btn-outline">Devenir candidate</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <svg class="crown" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 60 L20 25 L35 45 L50 15 L65 45 L80 25 L90 60 Z" fill="#ffffff" stroke="#1a2456" stroke-width="3" stroke-linejoin="round"/>
+          <circle cx="50" cy="15" r="5" fill="#c9a227"/>
+          <rect x="10" y="60" width="80" height="10" rx="3" fill="#ffffff" stroke="#1a2456" stroke-width="3"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMENT ÇA MARCHE -->
+  <section class="steps" id="comment-voter">
+    <div class="wrap">
+      <h2>Comment ça marche</h2>
+      <p class="section-lede">Quatre étapes simples, du lancement de la candidature au classement final.</p>
+      <div class="steps-grid">
+
+        <div class="step">
+          <svg class="step-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="16" r="8" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M8 42c0-8.8 7.2-16 16-16s16 7.2 16 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div class="step-num">Étape 1</div>
+          <h3>Inscription</h3>
+          <p>La candidate crée son profil : photo, présentation, région d'origine.</p>
+        </div>
+
+        <div class="step">
+          <svg class="step-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="24" r="5" stroke="currentColor" stroke-width="2.5"/>
+            <circle cx="36" cy="12" r="5" stroke="currentColor" stroke-width="2.5"/>
+            <circle cx="36" cy="36" r="5" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M16.5 21.5L31.5 14.5M16.5 26.5L31.5 33.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div class="step-num">Étape 2</div>
+          <h3>Partage</h3>
+          <p>Elle partage son profil auprès de son public sur les réseaux sociaux.</p>
+        </div>
+
+        <div class="step">
+          <svg class="step-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 40s-14-8.6-14-19.2C10 14.6 14.4 10 20 10c1.9 0 3.7.6 5.2 1.7C26.7 10.6 28.5 10 30.4 10 36 10 40 14.6 40 20.8 40 31.4 24 40 24 40z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+          <div class="step-num">Étape 3</div>
+          <h3>Votes</h3>
+          <p>Le public achète des packs de votes et soutient sa candidate favorite.</p>
+        </div>
+
+        <div class="step">
+          <svg class="step-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="26" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="2.5"/>
+            <rect x="20" y="18" width="8" height="22" rx="1.5" stroke="currentColor" stroke-width="2.5"/>
+            <rect x="32" y="10" width="8" height="30" rx="1.5" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
+          <div class="step-num">Étape 4</div>
+          <h3>Classement</h3>
+          <p>Le classement se met à jour en temps réel jusqu'à la clôture du concours.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CLASSEMENT -->
+  <section class="ranking" id="candidates">
+    <div class="wrap">
+      <span class="placeholder-badge">Exemple — données fictives</span>
+      <h2>Classement</h2>
+      <p class="section-lede">Ces trois profils sont des exemples de démonstration. La liste réelle des candidates et leur nombre de votes s'affichera ici.</p>
+
+      <div class="podium">
+
+        <div class="candidate-card rank-2">
+          <div class="avatar">B.K.</div>
+          <h3>Candidate B (exemple)</h3>
+          <div class="rank-label">2ᵉ place — Kinshasa</div>
+          <div class="vote-row">
+            <span class="vote-count">842 votes</span>
+            <button class="vote-heart" type="button" aria-label="Voter pour Candidate B" disabled>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7.5-4.6-10-9.5C0.3 6.8 2.4 3 6.2 3c2.1 0 3.7 1.1 4.8 2.7C12.1 4.1 13.7 3 15.8 3c3.8 0 5.9 3.8 4.2 7.5C19.5 15.4 12 20 12 20z" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="candidate-card rank-1">
+          <div class="avatar">A.M.</div>
+          <h3>Candidate A (exemple)</h3>
+          <div class="rank-label">1ʳᵉ place — Lubumbashi</div>
+          <div class="vote-row">
+            <span class="vote-count">1 340 votes</span>
+            <button class="vote-heart" type="button" aria-label="Voter pour Candidate A" disabled>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7.5-4.6-10-9.5C0.3 6.8 2.4 3 6.2 3c2.1 0 3.7 1.1 4.8 2.7C12.1 4.1 13.7 3 15.8 3c3.8 0 5.9 3.8 4.2 7.5C19.5 15.4 12 20 12 20z" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="candidate-card rank-3">
+          <div class="avatar">C.N.</div>
+          <h3>Candidate C (exemple)</h3>
+          <div class="rank-label">3ᵉ place — Goma</div>
+          <div class="vote-row">
+            <span class="vote-count">611 votes</span>
+            <button class="vote-heart" type="button" aria-label="Voter pour Candidate C" disabled>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7.5-4.6-10-9.5C0.3 6.8 2.4 3 6.2 3c2.1 0 3.7 1.1 4.8 2.7C12.1 4.1 13.7 3 15.8 3c3.8 0 5.9 3.8 4.2 7.5C19.5 15.4 12 20 12 20z" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- POURQUOI PARTICIPER -->
+  <section class="why" id="devenir-candidate">
+    <div class="wrap why-grid">
+      <div>
+        <div class="prize-figure">70<span>% des votes reversés</span></div>
+        <h2>Pourquoi participer</h2>
+        <p class="section-lede">Une part majoritaire des revenus générés par les votes est reversée directement à la gagnante, en plus de la visibilité offerte pendant tout le concours.</p>
+        <a href="#comment-voter" class="btn btn-primary">Devenir candidate</a>
+      </div>
+      <ul class="why-list">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Un pourcentage des votes reçus est reversé en prix à la candidate gagnante.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+          <span>Une visibilité nationale pendant toute la durée du concours.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Un classement transparent, mis à jour en temps réel.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="wrap">
+      <h2>Questions fréquentes</h2>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary>Comment voter pour une candidate ?</summary>
+          <p>Choisissez votre candidate, sélectionnez un pack de votes et payez via Mobile Money. Vos votes sont ajoutés immédiatement à son total.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Comment devenir candidate ?</summary>
+          <p>Remplissez le formulaire d'inscription avec votre profil et votre présentation. Votre candidature est ensuite validée avant publication.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Comment est calculé le prix ?</summary>
+          <p>Le prix correspond à un pourcentage fixe des revenus générés par l'ensemble des votes reçus pendant la durée du concours.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Le paiement est-il sécurisé ?</summary>
+          <p>Oui, tous les paiements passent par un prestataire Mobile Money certifié ; aucune donnée bancaire n'est stockée sur nos serveurs.</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="contact">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <a href="mailto:missdigitalrdc@gmail.com">missdigitalrdc@gmail.com</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://facebook.com/missdigitalrdc" target="_blank" rel="noopener noreferrer" aria-label="Miss Digital RDC sur Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.6h2.6l.4-3h-3v-1.9c0-.9.25-1.5 1.55-1.5H16.6V4.3c-.28-.04-1.25-.12-2.36-.12-2.34 0-3.94 1.43-3.94 4.04v2.25H7.7v3h2.6V21h3.2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Miss Digital RDC. Tous droits réservés.</p>
+  </div>
+</footer>
+
+</body>
+</html>
