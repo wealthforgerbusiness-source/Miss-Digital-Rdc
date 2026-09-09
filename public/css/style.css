@@ -1,0 +1,570 @@
+/* =========================================================
+   MISS DIGITAL RDC — DESIGN SYSTEM & FONDATIONS CSS
+   Fichier unique, importé par toutes les pages du site
+   (accueil, candidate, vote, admin).
+   Breakpoints de référence : 375 / 768 / 1024 / 1440
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap');
+
+/* ---------------------------------------------------------
+   1. DESIGN TOKENS
+   --------------------------------------------------------- */
+:root {
+
+  /* --- Couleurs de marque --- */
+  --color-navy: #1a2456;
+  --color-navy-deep: #0f1638;
+  --color-navy-light: #33407a;
+
+  --color-rose: #f2a9c3;        /* décoratif : badges, blobs, dégradés — pairer avec texte marine */
+  --color-rose-mid: #d9678f;    /* survols, accents secondaires */
+  --color-rose-strong: #b8446b; /* accessible sur blanc (~5.6:1) — fond de bouton, texte sur clair */
+
+  --color-gold: #c9a227;        /* réservé : prix, mise en avant rare */
+
+  /* --- Neutres / fond / texte --- */
+  --color-bg: #fdf7f9;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f6eef1;
+  --color-border: #ecdfe4;
+  --color-text: #201c2c;
+  --color-text-soft: #5a5566;
+  --color-text-inverse: #ffffff;
+
+  /* --- États formulaires --- */
+  --color-success: #15803d;     /* ~4.9:1 sur blanc */
+  --color-success-bg: #e9f7ee;
+  --color-error: #b91c1c;       /* ~5.9:1 sur blanc */
+  --color-error-bg: #fbeaea;
+
+  /* --- Rôles sémantiques --- */
+  --color-primary: var(--color-navy);
+  --color-primary-hover: var(--color-navy-deep);
+  --color-secondary: var(--color-rose-strong);
+  --color-secondary-hover: var(--color-navy);
+  --color-accent: var(--color-gold);
+
+  /* --- Typographie --- */
+  --font-display: "Fraunces", serif;
+  --font-body: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-md: 1.125rem;   /* 18px */
+  --text-lg: 1.375rem;   /* 22px */
+  --text-xl: clamp(1.75rem, 1.4rem + 1.6vw, 2.25rem);
+  --text-2xl: clamp(2.1rem, 1.6rem + 2.2vw, 2.9rem);
+  --text-display: clamp(2.5rem, 1.8rem + 3vw, 3.75rem);
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.7;
+
+  /* --- Échelle d'espacement (4px base) --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* --- Rayons --- */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-full: 999px;
+
+  /* --- Ombres (teintées marine, pas de gris générique) --- */
+  --shadow-sm: 0 2px 8px -2px rgba(26, 36, 86, 0.12);
+  --shadow-md: 0 12px 24px -8px rgba(26, 36, 86, 0.18);
+  --shadow-lg: 0 24px 48px -16px rgba(26, 36, 86, 0.28);
+  --shadow-rose: 0 12px 28px -10px rgba(217, 103, 143, 0.35);
+
+  /* --- Layout --- */
+  --max-w-content: 1200px;
+  --header-height: 72px;
+
+  /* --- Transitions --- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 0.15s;
+  --duration-base: 0.25s;
+}
+
+/* ---------------------------------------------------------
+   2. RESET & BASE
+   --------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button { font: inherit; background: none; border: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-navy);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.01em;
+}
+h1 { font-size: var(--text-display); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-lg); }
+
+p { color: var(--color-text-soft); }
+
+/* --- Cliquable = curseur pointeur, toujours --- */
+a, button, [role="button"], summary, input[type="submit"],
+input[type="checkbox"], input[type="radio"], select, .vote-heart, label[for] {
+  cursor: pointer;
+}
+button:disabled, [aria-disabled="true"] { cursor: not-allowed; opacity: 0.6; }
+
+/* --- Focus clavier visible, jamais supprimé --- */
+a:focus-visible, button:focus-visible, input:focus-visible,
+textarea:focus-visible, select:focus-visible, summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--color-navy);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.wrap {
+  max-width: var(--max-w-content);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.container-narrow { max-width: 720px; margin: 0 auto; }
+
+/* ---------------------------------------------------------
+   3. BOUTONS
+   --------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-base);
+  border: 2px solid transparent;
+  transition: transform var(--duration-fast) var(--ease-standard),
+              background var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--color-secondary);
+  color: var(--color-text-inverse);
+}
+.btn-primary:hover { background: var(--color-secondary-hover); box-shadow: var(--shadow-rose); }
+
+.btn-secondary {
+  background: var(--color-navy);
+  color: var(--color-text-inverse);
+}
+.btn-secondary:hover { background: var(--color-navy-deep); box-shadow: var(--shadow-md); }
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+}
+.btn-outline:hover { background: var(--color-navy); color: var(--color-text-inverse); }
+
+.btn-sm { padding: var(--space-3) var(--space-5); font-size: var(--text-sm); }
+
+/* --- Bouton cœur de vote --- */
+.vote-heart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--color-rose-strong);
+  color: var(--color-rose-strong);
+  background: var(--color-surface);
+  transition: background var(--duration-fast) var(--ease-standard),
+              color var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard);
+}
+.vote-heart svg { width: 20px; height: 20px; }
+.vote-heart:hover { transform: scale(1.06); }
+
+/* état inactif (pas encore voté) : contour seul, déjà le style par défaut */
+.vote-heart[aria-pressed="false"] { background: var(--color-surface); color: var(--color-rose-strong); }
+
+/* état actif (vote confirmé) : rempli */
+.vote-heart[aria-pressed="true"] {
+  background: var(--color-rose-strong);
+  color: var(--color-text-inverse);
+  border-color: var(--color-rose-strong);
+}
+
+.vote-heart:disabled { opacity: 0.5; transform: none; }
+
+/* ---------------------------------------------------------
+   4. CARTES CANDIDATE
+   --------------------------------------------------------- */
+.candidate-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+  text-align: center;
+  transition: box-shadow var(--duration-base) var(--ease-standard),
+              transform var(--duration-base) var(--ease-standard);
+}
+.candidate-card:hover { box-shadow: var(--shadow-rose); transform: translateY(-4px); }
+
+.candidate-card .card-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin: 0 auto var(--space-4);
+  object-fit: cover;
+  border: 3px solid var(--color-rose);
+  background: linear-gradient(135deg, var(--color-rose-mid), var(--color-navy));
+}
+
+.candidate-card .card-avatar--fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-lg);
+  color: var(--color-text-inverse);
+}
+
+.candidate-card h3 { font-size: var(--text-md); margin-bottom: var(--space-1); }
+
+.candidate-card .card-region {
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-4);
+}
+
+.vote-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-surface-alt);
+  color: var(--color-navy);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+}
+.vote-badge svg { width: 16px; height: 16px; color: var(--color-rose-strong); }
+
+/* ---------------------------------------------------------
+   5. FORMULAIRES
+   --------------------------------------------------------- */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+  text-align: left;
+}
+
+.form-field label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-navy);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  padding: var(--space-3) var(--space-4);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder { color: var(--color-text-soft); opacity: 0.7; }
+
+.form-field input:hover,
+.form-field select:hover,
+.form-field textarea:hover { border-color: var(--color-rose-mid); }
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--color-navy);
+  box-shadow: 0 0 0 3px rgba(26, 36, 86, 0.15);
+}
+
+.form-field .field-hint {
+  font-size: var(--text-xs);
+  color: var(--color-text-soft);
+}
+
+.form-field.is-success input { border-color: var(--color-success); }
+.form-field.is-success .field-message { color: var(--color-success); font-size: var(--text-xs); }
+
+.form-field.is-error input {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.12);
+}
+.form-field.is-error .field-message { color: var(--color-error); font-size: var(--text-xs); }
+
+/* Champ code de licence : espacement des caractères, usage clavier numérique côté HTML */
+.license-input {
+  letter-spacing: 0.2em;
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------
+   6. HEADER / NAVIGATION (+ burger mobile, sans JS)
+   --------------------------------------------------------- */
+.site-header {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: var(--max-w-content);
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-height);
+}
+
+.brand { display: flex; align-items: center; gap: var(--space-3); }
+.brand img { width: 40px; height: 40px; }
+.brand span {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-navy);
+}
+
+.main-nav ul { display: flex; gap: var(--space-6); }
+.main-nav a {
+  font-weight: var(--weight-medium);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  position: relative;
+}
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 0; height: 2px;
+  background: var(--color-rose-strong);
+  transition: width var(--duration-fast) var(--ease-standard);
+}
+.main-nav a:hover::after,
+.main-nav a[aria-current="page"]::after { width: 100%; }
+
+/* Burger : structure attendue sur chaque page —
+   <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+   <label for="nav-toggle" class="nav-toggle-btn" aria-label="Ouvrir le menu">...</label>
+   <nav class="main-nav">...</nav>                                   */
+.nav-toggle-input { display: none; }
+.nav-toggle-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+}
+.nav-toggle-btn span {
+  display: block;
+  height: 2.5px;
+  background: var(--color-navy);
+  border-radius: var(--radius-full);
+  transition: transform var(--duration-base) var(--ease-standard),
+              opacity var(--duration-base) var(--ease-standard);
+}
+
+@media (max-width: 768px) {
+  .nav-toggle-btn { display: flex; }
+
+  .main-nav {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--duration-base) var(--ease-standard);
+  }
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: var(--space-3) var(--space-5);
+  }
+  .main-nav a { display: block; padding: var(--space-3) 0; }
+
+  .nav-toggle-input:checked ~ .main-nav { max-height: 320px; }
+  .nav-toggle-input:checked ~ .nav-toggle-btn span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .nav-toggle-input:checked ~ .nav-toggle-btn span:nth-child(2) { opacity: 0; }
+  .nav-toggle-input:checked ~ .nav-toggle-btn span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+}
+
+/* ---------------------------------------------------------
+   7. FOOTER
+   --------------------------------------------------------- */
+.site-footer {
+  background: var(--color-navy-deep);
+  color: rgba(255, 255, 255, 0.8);
+  padding: var(--space-8) 0 var(--space-6);
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.footer-contact a { font-weight: var(--weight-medium); color: var(--color-text-inverse); }
+.footer-social a {
+  display: inline-flex;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  align-items: center;
+  justify-content: center;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+.footer-social a:hover { background: var(--color-rose-strong); }
+.footer-social svg { width: 18px; height: 18px; color: var(--color-text-inverse); }
+.footer-copy {
+  padding-top: var(--space-5);
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+}
+
+/* ---------------------------------------------------------
+   8. ANIMATION D'ARRIÈRE-PLAN (pure CSS, discrète)
+   Structure attendue : <div class="ambient-bg" aria-hidden="true">
+     <span class="ambient-dot"></span> × 5 à 8
+   </div> en position absolue/fixed derrière le contenu.
+   --------------------------------------------------------- */
+.ambient-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.ambient-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--color-rose), var(--color-rose-mid));
+  opacity: 0.18;
+  filter: blur(1px);
+  animation: drift 18s ease-in-out infinite;
+}
+.ambient-dot:nth-child(2n) {
+  background: radial-gradient(circle at 30% 30%, var(--color-navy-light), var(--color-navy));
+  animation-duration: 22s;
+  opacity: 0.12;
+}
+.ambient-dot:nth-child(1) { width: 60px; height: 60px; top: 10%; left: 8%; animation-delay: 0s; }
+.ambient-dot:nth-child(2) { width: 90px; height: 90px; top: 60%; left: 82%; animation-delay: -3s; }
+.ambient-dot:nth-child(3) { width: 40px; height: 40px; top: 75%; left: 20%; animation-delay: -6s; }
+.ambient-dot:nth-child(4) { width: 70px; height: 70px; top: 20%; left: 70%; animation-delay: -9s; }
+.ambient-dot:nth-child(5) { width: 50px; height: 50px; top: 45%; left: 45%; animation-delay: -12s; }
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(18px, -22px) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-dot { animation: none; }
+}
+
+/* ---------------------------------------------------------
+   9. UTILITAIRES
+   --------------------------------------------------------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.text-center { text-align: center; }
+.mt-0 { margin-top: 0; }
+
+/* ---------------------------------------------------------
+   10. BREAKPOINTS DE RÉFÉRENCE
+   375  → base mobile (styles par défaut, mobile-first)
+   768  → tablette
+   1024 → desktop
+   1440 → grand écran
+   --------------------------------------------------------- */
+@media (min-width: 768px) {
+  .wrap { padding: 0 var(--space-6); }
+}
+
+@media (min-width: 1024px) {
+  h1 { font-size: var(--text-display); }
+}
+
+@media (min-width: 1440px) {
+  .wrap { max-width: 1320px; }
+}
