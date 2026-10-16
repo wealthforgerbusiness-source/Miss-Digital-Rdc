@@ -1,0 +1,60 @@
+{
+  "id": "/",
+  "name": "Miss Digital RDC",
+  "short_name": "Miss Digital",
+  "description": "Le concours de beauté 100 % en ligne de la RDC. Découvrez les candidates et votez par mobile money.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#182B5F",
+  "categories": ["entertainment", "lifestyle", "social"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Voter",
+      "short_name": "Voter",
+      "description": "Voir les candidates et voter",
+      "url": "/#candidates",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Classement",
+      "short_name": "Classement",
+      "description": "Voir le classement en direct",
+      "url": "/#classement",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Devenir candidate",
+      "short_name": "S'inscrire",
+      "description": "Créer ma candidature",
+      "url": "/#inscription",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}
