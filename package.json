@@ -1,0 +1,13 @@
+{
+  "name": "miss-digital-rdc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Concours de vote payant en ligne Miss Digital RDC (PWA)",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@netlify/functions": "^2.8.1",
+    "@supabase/supabase-js": "^2.45.0"
+  }
+}
