@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Miss Digital RDC – Concours de beauté et de vote en ligne en RDC</title>
+  <meta name="description" content="Miss Digital RDC est le concours de beauté 100 % en ligne de la RDC. Découvrez les candidates, votez par Orange Money, M-Pesa ou Airtel Money et soutenez votre favorite.">
+  <meta name="keywords" content="Miss Digital RDC, concours de beauté RDC, vote en ligne, Miss RDC, Kinshasa, mobile money">
+  <meta name="author" content="Miss Digital RDC">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#182B5F">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://miss-digital-rdc.netlify.app/">
+
+  <!-- Favicons / icônes -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/icons/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+
+  <!-- Aperçu lors du partage (WhatsApp, Facebook, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Miss Digital RDC">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Miss Digital RDC – Votez pour votre candidate préférée">
+  <meta property="og:description" content="Le concours de beauté 100 % en ligne de la RDC. Découvrez les candidates et votez par mobile money.">
+  <meta property="og:url" content="https://miss-digital-rdc.netlify.app/">
+  <meta property="og:image" content="https://miss-digital-rdc.netlify.app/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Logo Miss Digital RDC">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Miss Digital RDC – Votez pour votre candidate préférée">
+  <meta name="twitter:description" content="Le concours de beauté 100 % en ligne de la RDC. Découvrez les candidates et votez par mobile money.">
+  <meta name="twitter:image" content="https://miss-digital-rdc.netlify.app/assets/og-image.png">
+
+  <!-- PWA iOS -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Miss Digital">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Données structurées pour Google (nom, logo) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "Miss Digital RDC",
+        "alternateName": ["Miss Digital", "MissDigitalRDC"],
+        "url": "https://miss-digital-rdc.netlify.app/",
+        "inLanguage": "fr"
+      },
+      {
+        "@type": "Organization",
+        "name": "Miss Digital RDC",
+        "url": "https://miss-digital-rdc.netlify.app/",
+        "logo": "https://miss-digital-rdc.netlify.app/assets/icons/icon-512.png",
+        "areaServed": "CD"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- ===== Sprite d'icônes SVG ===== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21.2l7.8-7.7 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 24 24"><path d="M2 18l2-11 5 5 3-8 3 8 5-5 2 11z"/><line x1="2" y1="21" x2="22" y2="21"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="scroll-bar" id="scrollBar" aria-hidden="true"></div>
+
+  <!-- ===== Écran de démarrage ===== -->
+  <div class="splash" id="splash" aria-hidden="true">
+    <img src="/assets/logo.png" alt="" class="splash__logo" width="220" height="220">
+    <div class="splash__bar"><span></span></div>
+  </div>
+
+  <div class="offline-bar" id="offlineBar" role="status" hidden>Vous êtes hors ligne. Reconnectez-vous pour voter.</div>
+
+  <!-- ===== En-tête ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header__inner">
+      <a href="#accueil" class="brand" aria-label="Miss Digital RDC – accueil">
+        <img src="/assets/icons/icon-192.png" alt="" width="44" height="44" class="brand__img">
+        <span class="brand__text">Miss Digital <b>RDC</b></span>
+      </a>
+
+      <nav class="nav" id="mainNav" aria-label="Navigation principale">
+        <a href="#candidates" class="nav__link">Candidates</a>
+        <a href="#classement" class="nav__link">Classement</a>
+        <a href="#packs" class="nav__link">Packs de votes</a>
+        <a href="#gains" class="nav__link">Gains</a>
+        <a href="#faq" class="nav__link">FAQ</a>
+        <div class="nav__mobile-actions">
+          <button class="btn btn--primary btn--block" data-open="vote">Voter</button>
+          <button class="btn btn--ghost btn--block" data-open="register">Devenir candidate</button>
+          <button class="btn btn--link btn--block" data-open="space">Mon espace candidate</button>
+        </div>
+      </nav>
+
+      <div class="header__actions">
+        <button class="btn btn--link hide-mobile" data-open="space">
+          <svg class="icon"><use href="#i-user"/></svg> Mon espace
+        </button>
+        <button class="btn btn--ghost hide-mobile" data-open="register">Participer</button>
+        <button class="btn btn--primary" data-open="vote">
+          <svg class="icon icon--fill"><use href="#i-heart"/></svg> Voter
+        </button>
+        <button class="burger" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNav">
+          <svg class="icon"><use href="#i-menu"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="accueil">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="orb orb--1"></span>
+        <span class="orb orb--2"></span>
+        <span class="dots"></span>
+      </div>
+
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <p class="eyebrow" data-reveal><span class="pulse"></span> Édition 2026 · Votes ouverts</p>
+          <h1 class="hero__title" data-reveal style="--d:.08s">
+            Élisez la <span class="grad">Miss Digital RDC</span>
+          </h1>
+          <p class="hero__lead" data-reveal style="--d:.16s">
+            Le concours de beauté 100 % en ligne de la RDC. Découvrez les candidates, soutenez votre favorite par vos votes : la gagnante est désignée <strong>uniquement par le nombre de votes</strong>.
+          </p>
+          <div class="hero__cta" data-reveal style="--d:.24s">
+            <button class="btn btn--primary btn--lg" data-open="vote">
+              <svg class="icon icon--fill"><use href="#i-heart"/></svg> Voter maintenant
+            </button>
+            <button class="btn btn--ghost btn--lg" data-open="register">
+              Je veux participer <svg class="icon"><use href="#i-arrow"/></svg>
+            </button>
+          </div>
+          <p class="hero__price" data-reveal style="--d:.32s">
+            <svg class="icon"><use href="#i-phone"/></svg>
+            1 vote = <strong data-cfg="votePriceCDF">2 250 CDF</strong> ou <strong data-cfg="votePriceUSD">1 USD</strong>
+            · Orange Money · M-Pesa · Airtel Money
+          </p>
+        </div>
+
+        <div class="hero__visual" data-reveal="zoom" style="--d:.2s">
+          <div class="halo">
+            <span class="halo__ring"></span>
+            <span class="halo__ring halo__ring--2"></span>
+            <img src="/assets/logo.png" alt="Logo Miss Digital RDC" class="halo__logo" width="420" height="420" fetchpriority="high">
+          </div>
+          <div class="float-card float-card--leader" id="heroLeader" hidden>
+            <svg class="icon"><use href="#i-crown"/></svg>
+            <div>
+              <small>En tête actuellement</small>
+              <strong id="heroLeaderName">—</strong>
+            </div>
+            <span class="float-card__votes" id="heroLeaderVotes">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="stats" data-reveal>
+          <div class="stat">
+            <strong data-stat="candidates" data-count="0">0</strong>
+            <span>Candidates en lice</span>
+          </div>
+          <div class="stat">
+            <strong data-stat="votes" data-count="0">0</strong>
+            <span>Votes enregistrés</span>
+          </div>
+          <div class="stat">
+            <strong data-stat="cities" data-count="0">0</strong>
+            <span>Villes représentées</span>
+          </div>
+          <div class="stat">
+            <strong data-cfg="votingEnd">—</strong>
+            <span>Clôture des votes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMMENT ÇA MARCHE ===== -->
+    <section class="section" id="comment">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="eyebrow">Simple et rapide</p>
+          <h2>Comment voter en 3 étapes</h2>
+          <p>Aucun compte nécessaire pour voter. Tout se fait depuis votre téléphone.</p>
+        </header>
+
+        <ol class="steps">
+          <li class="step" data-reveal style="--d:.05s">
+            <span class="step__num">1</span>
+            <div class="step__icon"><svg class="icon"><use href="#i-search"/></svg></div>
+            <h3>Choisissez votre candidate</h3>
+            <p>Parcourez les profils validés et ouvrez celui de votre favorite.</p>
+          </li>
+          <li class="step" data-reveal style="--d:.15s">
+            <span class="step__num">2</span>
+            <div class="step__icon"><svg class="icon"><use href="#i-zap"/></svg></div>
+            <h3>Choisissez un pack</h3>
+            <p>1 vote ou un pack de 5, 10, 30, 50, 100 votes… payable en CDF ou en dollars.</p>
+          </li>
+          <li class="step" data-reveal style="--d:.25s">
+            <span class="step__num">3</span>
+            <div class="step__icon"><svg class="icon"><use href="#i-phone"/></svg></div>
+            <h3>Payez par mobile money</h3>
+            <p>Orange Money, M-Pesa ou Airtel Money. Les votes sont ajoutés dès la confirmation.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== CLASSEMENT ===== -->
+    <section class="section section--tint" id="classement">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="eyebrow"><span class="pulse"></span> En direct</p>
+          <h2>Le classement</h2>
+          <p>Les trois candidates en tête. Le classement se met à jour automatiquement.</p>
+        </header>
+
+        <div class="podium" id="podium" aria-live="polite">
+          <div class="podium__skeleton skeleton"></div>
+          <div class="podium__skeleton skeleton"></div>
+          <div class="podium__skeleton skeleton"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CANDIDATES ===== -->
+    <section class="section" id="candidates">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="eyebrow">Les candidates</p>
+          <h2>Découvrez et soutenez</h2>
+          <p>Touchez le cœur pour voter. Chaque vote compte.</p>
+        </header>
+
+        <div class="toolbar" data-reveal>
+          <label class="search" for="searchInput">
+            <svg class="icon"><use href="#i-search"/></svg>
+            <input type="search" id="searchInput" placeholder="Rechercher une candidate ou une ville" autocomplete="off">
+          </label>
+          <select id="cityFilter" aria-label="Filtrer par ville">
+            <option value="">Toutes les villes</option>
+          </select>
+          <select id="sortSelect" aria-label="Trier">
+            <option value="votes">Plus de votes</option>
+            <option value="recent">Plus récentes</option>
+            <option value="name">Ordre alphabétique</option>
+          </select>
+        </div>
+        <p class="toolbar__count" id="candidatesCount" aria-live="polite"></p>
+
+        <div class="grid" id="candidatesGrid">
+          <div class="card-skel skeleton"></div>
+          <div class="card-skel skeleton"></div>
+          <div class="card-skel skeleton"></div>
+          <div class="card-skel skeleton"></div>
+        </div>
+
+        <div class="empty" id="candidatesEmpty" hidden>
+          <svg class="icon icon--xl"><use href="#i-heart"/></svg>
+          <h3>Aucune candidate pour le moment</h3>
+          <p>Les candidatures validées apparaîtront ici. Soyez la première !</p>
+          <button class="btn btn--primary" data-open="register">Je m'inscris</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PACKS DE VOTES ===== -->
+    <section class="section section--navy" id="packs">
+      <div class="container">
+        <header class="section__head section__head--light" data-reveal>
+          <p class="eyebrow eyebrow--light">Packs de votes</p>
+          <h2>Soutenez plus fort, en un seul paiement</h2>
+          <p>Choisissez un pack, puis la candidate qui le reçoit. Payez en francs congolais ou en dollars.</p>
+        </header>
+
+        <div class="currency-toggle currency-toggle--center" role="group" aria-label="Devise d'affichage" data-reveal>
+          <button type="button" class="is-active" data-currency="CDF">Francs congolais (CDF)</button>
+          <button type="button" data-currency="USD">Dollars (USD)</button>
+        </div>
+
+        <div class="packs" id="packsGrid">
+          <!-- Rendu par JavaScript à partir de config.js -->
+        </div>
+
+        <p class="packs__note" data-reveal>
+          <svg class="icon"><use href="#i-shield"/></svg>
+          Paiement sécurisé par mobile money. Aucun vote n'est remboursable (voir le <button class="link" data-open="rules">règlement</button>).
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== GAINS ===== -->
+    <section class="section" id="gains">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="eyebrow">Récompenses</p>
+          <h2>Trois gagnantes, un seul critère : les votes</h2>
+          <p>
+            La cagnotte des gagnantes représente <strong data-cfg="poolShare">50 %</strong> des recettes nettes du concours.
+            Le classement final dépend <strong>uniquement</strong> du nombre de votes validés.
+          </p>
+        </header>
+
+        <div class="pool" id="poolBox" hidden data-reveal>
+          <small>Cagnotte actuelle des gagnantes</small>
+          <strong id="poolAmount">—</strong>
+        </div>
+
+        <div class="prizes">
+          <article class="prize prize--2" data-reveal style="--d:.1s">
+            <span class="prize__rank">2<sup>e</sup></span>
+            <svg class="icon icon--xl"><use href="#i-award"/></svg>
+            <h3>Deuxième gagnante</h3>
+            <p class="prize__pct"><span data-cfg="share2">30 %</span> <small>de la cagnotte</small></p>
+            <p class="prize__sub">soit <span data-cfg="prizePct2">15 %</span> des recettes nettes</p>
+          </article>
+
+          <article class="prize prize--1" data-reveal>
+            <span class="prize__rank">1<sup>re</sup></span>
+            <svg class="icon icon--xl"><use href="#i-crown"/></svg>
+            <h3>Miss Digital RDC</h3>
+            <p class="prize__pct"><span data-cfg="share1">50 %</span> <small>de la cagnotte</small></p>
+            <p class="prize__sub">soit <span data-cfg="prizePct1">25 %</span> des recettes nettes</p>
+          </article>
+
+          <article class="prize prize--3" data-reveal style="--d:.2s">
+            <span class="prize__rank">3<sup>e</sup></span>
+            <svg class="icon icon--xl"><use href="#i-award"/></svg>
+            <h3>Troisième gagnante</h3>
+            <p class="prize__pct"><span data-cfg="share3">20 %</span> <small>de la cagnotte</small></p>
+            <p class="prize__sub">soit <span data-cfg="prizePct3">10 %</span> des recettes nettes</p>
+          </article>
+        </div>
+
+        <p class="prizes__note" data-reveal>
+          Les recettes nettes correspondent aux votes encaissés, après déduction des frais de paiement mobile money
+          (environ <span data-cfg="feePercent">2,5 %</span>). Les montants exacts dépendent des recettes réelles du concours et
+          ne sont pas garantis à l'avance. Détails dans le <button class="link" data-open="rules">règlement</button>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== INSCRIPTION ===== -->
+    <section class="section section--tint" id="inscription">
+      <div class="container">
+        <div class="cta-band" data-reveal>
+          <div class="cta-band__text">
+            <p class="eyebrow">Candidatures ouvertes</p>
+            <h2>Vous voulez devenir Miss Digital RDC ?</h2>
+            <p>
+              L'inscription prend 3 minutes : lisez le règlement, prenez une photo en direct avec la caméra de votre téléphone,
+              renseignez vos informations. Notre équipe valide votre profil, puis vous recevez des votes.
+            </p>
+            <ul class="checks">
+              <li><svg class="icon"><use href="#i-check"/></svg> Inscription gratuite</li>
+              <li><svg class="icon"><use href="#i-check"/></svg> Photo prise en direct (pas d'import de galerie)</li>
+              <li><svg class="icon"><use href="#i-check"/></svg> Suivez votre validation et vos votes dans « Mon espace »</li>
+            </ul>
+            <p class="cta-band__deadline"><svg class="icon"><use href="#i-clock"/></svg> Fin des inscriptions : <strong data-cfg="registrationDeadline">—</strong></p>
+          </div>
+          <div class="cta-band__actions">
+            <button class="btn btn--primary btn--lg" data-open="register">
+              <svg class="icon"><use href="#i-camera"/></svg> Créer ma candidature
+            </button>
+            <button class="btn btn--ghost btn--lg" data-open="space">J'ai déjà une candidature</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section" id="faq">
+      <div class="container container--narrow">
+        <header class="section__head" data-reveal>
+          <p class="eyebrow">Questions fréquentes</p>
+          <h2>Vous avez une question ?</h2>
+        </header>
+
+        <div class="faq" data-reveal>
+          <details>
+            <summary>Combien coûte un vote ? <svg class="icon"><use href="#i-chevron"/></svg></summary>
+            <p>Un vote coûte <strong data-cfg="votePriceCDF">2 250 CDF</strong> ou <strong data-cfg="votePriceUSD">1 USD</strong>. Des packs permettent d'envoyer plusieurs votes d'un seul paiement.</p>
+          </details>
+          <details>
+            <summary>Quels moyens de paiement sont acceptés ? <svg class="icon"><use href="#i-chevron"/></svg></summary>
+            <p>Orange Money, M-Pesa (Vodacom) et Airtel Money. Vous êtes redirigé vers une page de paiement sécurisée où vous choisissez votre réseau et saisissez votre numéro.</p>
+          </details>
+          <details>
+            <summary>Mon vote est-il ajouté immédiatement ? <svg class="icon"><use href="#i-chevron"/></svg></summary>
+            <p>Les votes sont ajoutés dès que le paiement est confirmé par l'opérateur, en général en quelques secondes. Si votre compte a été débité sans que les votes apparaissent, contactez-nous avec votre référence de transaction.</p>
+          </details>
+          <details>
+            <summary>Puis-je être remboursé ? <svg class="icon"><use href="#i-chevron"/></svg></summary>
+            <p>Non. Les votes sont définitifs et non remboursables, sauf erreur technique avérée (par exemple un double débit). Voir l'article 5 du règlement.</p>
+          </details>
+          <details>
+            <summary>Comment la gagnante est-elle désignée ? <svg class="icon"><use href="#i-chevron"/></svg></summary>
+            <p>Uniquement par le nombre de votes validés à la clôture. Il n'y a ni jury, ni tirage au sort. Les trois candidates en tête sont les trois gagnantes.</p>
+          </details>
+          <details>
+            <summary>Comment me porter candidate ? <svg class="icon"><use href="#i-chevron"/></svg></summary>
+            <p>Cliquez sur « Participer », acceptez le règlement, prenez une photo en direct et remplissez vos informations. Votre profil apparaît sur le site après validation par l'équipe.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== PIED DE PAGE ===== -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <a href="#accueil" class="brand brand--light">
+          <img src="/assets/icons/icon-192.png" alt="" width="44" height="44" class="brand__img">
+          <span class="brand__text">Miss Digital <b>RDC</b></span>
+        </a>
+        <p class="footer__about">Le concours de beauté 100 % en ligne de la République démocratique du Congo.</p>
+      </div>
+      <nav aria-label="Liens du pied de page">
+        <h4>Navigation</h4>
+        <a href="#candidates">Candidates</a>
+        <a href="#classement">Classement</a>
+        <a href="#packs">Packs de votes</a>
+        <a href="#gains">Gains</a>
+      </nav>
+      <div>
+        <h4>Infos</h4>
+        <button class="link link--light" data-open="rules">Règlement du concours</button>
+        <button class="link link--light" data-open="register">Devenir candidate</button>
+        <button class="link link--light" data-open="space">Mon espace candidate</button>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="#" id="contactWhatsapp" target="_blank" rel="noopener"><svg class="icon"><use href="#i-chat"/></svg> WhatsApp</a>
+        <a href="#" id="contactEmail"><span data-cfg="contactEmail">contact@missdigitalrdc.com</span></a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> Miss Digital RDC. Tous droits réservés.</p>
+      <p>Concours de popularité en ligne. Ce n'est ni une loterie ni un jeu de hasard.</p>
+    </div>
+  </footer>
+
+  <!-- Bouton de vote flottant (mobile) -->
+  <button class="sticky-cta" data-open="vote" aria-label="Voter">
+    <svg class="icon icon--fill"><use href="#i-heart"/></svg> Voter
+  </button>
+
+  <!-- Bannière d'installation PWA -->
+  <div class="install" id="installBar" hidden>
+    <img src="/assets/icons/icon-192.png" alt="" width="40" height="40">
+    <p><strong>Installer Miss Digital RDC</strong><br><small>Accès rapide depuis votre écran d'accueil.</small></p>
+    <button class="btn btn--primary btn--sm" id="installBtn"><svg class="icon"><use href="#i-download"/></svg> Installer</button>
+    <button class="install__close" id="installClose" aria-label="Fermer"><svg class="icon"><use href="#i-x"/></svg></button>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- =====================================================
+       MODALE : VOTE
+       ===================================================== -->
+  <div class="modal" id="modal-vote" role="dialog" aria-modal="true" aria-labelledby="voteTitle" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" data-close aria-label="Fermer"><svg class="icon"><use href="#i-x"/></svg></button>
+      <h2 id="voteTitle">Envoyer des votes</h2>
+      <p class="modal__sub">Choisissez la candidate, un pack, puis payez par mobile money.</p>
+
+      <form id="voteForm" novalidate>
+        <div class="field">
+          <label for="voteCandidateSelect">Candidate soutenue</label>
+          <select id="voteCandidateSelect" required></select>
+        </div>
+        <div class="vote-candidate" id="voteCandidate"></div>
+
+        <div class="field">
+          <span class="label">Devise de paiement</span>
+          <div class="currency-toggle" role="group" aria-label="Devise de paiement">
+            <button type="button" class="is-active" data-currency="CDF">CDF</button>
+            <button type="button" data-currency="USD">USD</button>
+          </div>
+        </div>
+
+        <fieldset class="field">
+          <legend class="label">Pack de votes</legend>
+          <div class="packs-select" id="votePacks"></div>
+        </fieldset>
+
+        <div class="field">
+          <label for="voteCustom">Ou une autre quantité de votes</label>
+          <input type="number" id="voteCustom" min="1" max="10000" inputmode="numeric" placeholder="Ex. 15">
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="voterName">Votre nom</label>
+            <input type="text" id="voterName" autocomplete="name" required placeholder="Ex. Jean Mukendi">
+          </div>
+          <div class="field">
+            <label for="voterEmail">Votre email</label>
+            <input type="email" id="voterEmail" autocomplete="email" required placeholder="vous@exemple.com">
+          </div>
+        </div>
+        <div class="field">
+          <label for="voterPhone">Téléphone mobile money <span class="opt">(facultatif)</span></label>
+          <input type="tel" id="voterPhone" autocomplete="tel" inputmode="tel" placeholder="Ex. 0990000000">
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="voteAccept" required>
+          <span>J'ai lu et j'accepte le <button type="button" class="link" data-open="rules">règlement</button>. Je comprends que les votes sont <strong>non remboursables</strong>.</span>
+        </label>
+
+        <div class="total" aria-live="polite">
+          <div><small id="voteSummary">Sélectionnez un pack</small></div>
+          <strong id="voteTotal">—</strong>
+        </div>
+
+        <p class="form-error" id="voteError" role="alert" hidden></p>
+
+        <button type="submit" class="btn btn--primary btn--lg btn--block" id="votePay">
+          <svg class="icon icon--fill"><use href="#i-heart"/></svg> Payer et voter
+        </button>
+        <p class="secure"><svg class="icon"><use href="#i-lock"/></svg> Vous serez redirigé vers une page de paiement sécurisée.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       MODALE : INSCRIPTION CANDIDATE
+       ===================================================== -->
+  <div class="modal" id="modal-register" role="dialog" aria-modal="true" aria-labelledby="regTitle" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel modal__panel--lg">
+      <button class="modal__close" data-close aria-label="Fermer"><svg class="icon"><use href="#i-x"/></svg></button>
+      <h2 id="regTitle">Devenir candidate</h2>
+
+      <div class="stepper" id="regProgress" aria-label="Progression">
+        <span class="stepper__item is-active" data-dot="1"><i>1</i> Règlement</span>
+        <span class="stepper__item" data-dot="2"><i>2</i> Photo</span>
+        <span class="stepper__item" data-dot="3"><i>3</i> Infos</span>
+        <span class="stepper__item" data-dot="4"><i>4</i> Compte</span>
+      </div>
+
+      <form id="registerForm" novalidate>
+        <!-- Étape 1 : règlement -->
+        <section class="reg-step is-active" data-step="1">
+          <h3>Lisez le règlement</h3>
+          <p class="hint">Faites défiler le texte jusqu'en bas pour pouvoir accepter.</p>
+          <div class="rules-box" id="regRules" tabindex="0"></div>
+          <label class="check">
+            <input type="checkbox" id="regAccept" disabled>
+            <span>J'ai lu et j'accepte l'intégralité du règlement du concours Miss Digital RDC.</span>
+          </label>
+        </section>
+
+        <!-- Étape 2 : photo en direct -->
+        <section class="reg-step" data-step="2" hidden>
+          <h3>Prenez votre photo en direct</h3>
+          <p class="hint">Visage bien visible, bonne lumière, sans filtre ni lunettes de soleil. L'import depuis la galerie n'est pas possible.</p>
+
+          <div class="cam" id="camBox">
+            <video id="camVideo" playsinline muted autoplay></video>
+            <img id="camPreview" alt="Aperçu de votre photo" hidden>
+            <div class="cam__frame" aria-hidden="true"></div>
+            <div class="cam__placeholder" id="camPlaceholder">
+              <svg class="icon icon--xl"><use href="#i-camera"/></svg>
+              <p>Autorisez l'accès à la caméra pour continuer.</p>
+            </div>
+            <canvas id="camCanvas" hidden></canvas>
+          </div>
+          <p class="form-error" id="camError" role="alert" hidden></p>
+
+          <div class="cam__actions">
+            <button type="button" class="btn btn--ghost" id="camStart"><svg class="icon"><use href="#i-camera"/></svg> Activer la caméra</button>
+            <button type="button" class="btn btn--primary" id="camCapture" hidden>Prendre la photo</button>
+            <button type="button" class="btn btn--ghost" id="camRetake" hidden>Reprendre</button>
+            <button type="button" class="btn btn--ghost" id="camFlip" hidden>Changer de caméra</button>
+          </div>
+        </section>
+
+        <!-- Étape 3 : informations -->
+        <section class="reg-step" data-step="3" hidden>
+          <h3>Vos informations</h3>
+          <div class="field-row">
+            <div class="field">
+              <label for="regFirstName">Prénom</label>
+              <input type="text" id="regFirstName" autocomplete="given-name" required>
+            </div>
+            <div class="field">
+              <label for="regLastName">Nom</label>
+              <input type="text" id="regLastName" autocomplete="family-name" required>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="regAge">Âge</label>
+              <input type="number" id="regAge" min="18" max="60" inputmode="numeric" required>
+            </div>
+            <div class="field">
+              <label for="regCity">Ville</label>
+              <input type="text" id="regCity" autocomplete="address-level2" required placeholder="Ex. Kinshasa">
+            </div>
+          </div>
+          <div class="field">
+            <label for="regCommune">Commune / quartier</label>
+            <input type="text" id="regCommune" placeholder="Ex. Gombe">
+          </div>
+          <div class="field">
+            <label for="regPhone">Téléphone WhatsApp</label>
+            <input type="tel" id="regPhone" autocomplete="tel" inputmode="tel" required placeholder="Ex. 0990000000">
+          </div>
+          <div class="field">
+            <label for="regSocial">Instagram ou TikTok <span class="opt">(facultatif)</span></label>
+            <input type="text" id="regSocial" placeholder="@votrecompte">
+          </div>
+          <div class="field">
+            <label for="regBio">Présentez-vous en quelques mots <span class="opt">(facultatif)</span></label>
+            <textarea id="regBio" rows="3" maxlength="240" placeholder="Qui êtes-vous ? Quelles sont vos passions ?"></textarea>
+            <small class="counter"><span id="regBioCount">0</span>/240</small>
+          </div>
+        </section>
+
+        <!-- Étape 4 : compte -->
+        <section class="reg-step" data-step="4" hidden>
+          <h3>Créez votre accès « Mon espace »</h3>
+          <p class="hint">Avec cet email et ce mot de passe, vous suivrez la validation de votre candidature et vos votes.</p>
+          <div class="field">
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" autocomplete="email" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="regPassword">Mot de passe</label>
+              <input type="password" id="regPassword" autocomplete="new-password" minlength="8" required>
+            </div>
+            <div class="field">
+              <label for="regPassword2">Confirmer</label>
+              <input type="password" id="regPassword2" autocomplete="new-password" minlength="8" required>
+            </div>
+          </div>
+          <div class="recap" id="regRecap"></div>
+        </section>
+
+        <p class="form-error" id="regError" role="alert" hidden></p>
+
+        <div class="reg-nav" id="regNav">
+          <button type="button" class="btn btn--ghost" id="regPrev" hidden>Retour</button>
+          <button type="button" class="btn btn--primary" id="regNext">Continuer <svg class="icon"><use href="#i-arrow"/></svg></button>
+          <button type="submit" class="btn btn--primary" id="regSubmit" hidden>Envoyer ma candidature</button>
+        </div>
+      </form>
+
+      <!-- Succès -->
+      <div class="success" id="regSuccess" hidden>
+        <div class="success__icon"><svg class="icon icon--xl"><use href="#i-check"/></svg></div>
+        <h3>Candidature envoyée !</h3>
+        <p>Notre équipe va examiner votre profil. Une fois validé, il apparaîtra sur le site et vous pourrez recevoir des votes.</p>
+        <p>Suivez l'avancement dans <strong>Mon espace</strong> avec votre email et votre mot de passe.</p>
+        <button class="btn btn--primary" data-open="space">Ouvrir mon espace</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       MODALE : MON ESPACE CANDIDATE
+       ===================================================== -->
+  <div class="modal" id="modal-space" role="dialog" aria-modal="true" aria-labelledby="spaceTitle" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" data-close aria-label="Fermer"><svg class="icon"><use href="#i-x"/></svg></button>
+      <h2 id="spaceTitle">Mon espace candidate</h2>
+
+      <!-- Connexion -->
+      <form id="loginForm" novalidate>
+        <p class="modal__sub">Connectez-vous pour suivre votre candidature et vos votes.</p>
+        <div class="field">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="loginPassword">Mot de passe</label>
+          <input type="password" id="loginPassword" autocomplete="current-password" required>
+        </div>
+        <p class="form-error" id="loginError" role="alert" hidden></p>
+        <button type="submit" class="btn btn--primary btn--block">Se connecter</button>
+        <p class="secure">
+          <button type="button" class="link" id="forgotBtn">Mot de passe oublié ?</button>
+          ·
+          <button type="button" class="link" data-open="register">Créer une candidature</button>
+        </p>
+      </form>
+
+      <!-- Tableau de bord candidate -->
+      <div id="spaceDashboard" hidden>
+        <div class="space-head">
+          <img id="spacePhoto" alt="Votre photo" width="88" height="88">
+          <div>
+            <h3 id="spaceName">—</h3>
+            <p id="spaceMeta" class="muted">—</p>
+            <span class="badge" id="spaceStatus">—</span>
+          </div>
+        </div>
+
+        <p class="notice" id="spaceNotice" hidden></p>
+
+        <div class="space-stats">
+          <div><strong id="spaceVotes">0</strong><span>Votes reçus</span></div>
+          <div><strong id="spaceRank">—</strong><span>Classement</span></div>
+        </div>
+
+        <div class="field" id="spaceShareBox">
+          <label for="spaceLink">Votre lien de vote à partager</label>
+          <div class="copy">
+            <input type="text" id="spaceLink" readonly>
+            <button type="button" class="btn btn--ghost" id="spaceCopy"><svg class="icon"><use href="#i-copy"/></svg> Copier</button>
+          </div>
+          <div class="share-row">
+            <a class="btn btn--primary btn--sm" id="spaceWhatsapp" target="_blank" rel="noopener"><svg class="icon"><use href="#i-chat"/></svg> Partager sur WhatsApp</a>
+            <button type="button" class="btn btn--ghost btn--sm" id="spaceShare"><svg class="icon"><use href="#i-share"/></svg> Autres</button>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn--link" id="logoutBtn">Se déconnecter</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       MODALE : PROFIL D'UNE CANDIDATE
+       ===================================================== -->
+  <div class="modal" id="modal-candidate" role="dialog" aria-modal="true" aria-labelledby="candName" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel modal__panel--profile">
+      <button class="modal__close" data-close aria-label="Fermer"><svg class="icon"><use href="#i-x"/></svg></button>
+      <div id="candidateDetail"><!-- rendu par JavaScript --></div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       MODALE : RÈGLEMENT
+       ===================================================== -->
+  <div class="modal" id="modal-rules" role="dialog" aria-modal="true" aria-labelledby="rulesTitle" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel modal__panel--lg">
+      <button class="modal__close" data-close aria-label="Fermer"><svg class="icon"><use href="#i-x"/></svg></button>
+      <h2 id="rulesTitle">Règlement du concours</h2>
+      <div class="rules-box rules-box--modal" id="rulesBox" tabindex="0"></div>
+      <button class="btn btn--primary btn--block" data-close>J'ai compris</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       TEXTE DU RÈGLEMENT (source unique, copié par JavaScript)
+       Les valeurs [data-cfg] viennent de config.js
+       ===================================================== -->
+  <template id="rulesTemplate">
+    <h3>Règlement du concours « Miss Digital RDC »</h3>
+    <p class="rules-meta">Version en vigueur pour l'édition 2026.</p>
+
+    <h4>Article 1 – Organisateur et objet</h4>
+    <p>Le concours « Miss Digital RDC » (ci-après « le Concours ») est organisé en ligne par l'équipe Miss Digital RDC (ci-après « l'Organisateur »). Il s'agit d'un concours de popularité dont le classement est établi par les votes du public sur le site et l'application web Miss Digital RDC.</p>
+
+    <h4>Article 2 – Conditions de participation des candidates</h4>
+    <p>Pour participer, la candidate doit : (a) être une femme âgée d'au moins <span data-cfg="minAge">18</span> ans révolus ; (b) résider en République démocratique du Congo ; (c) fournir des informations exactes et complètes ; (d) fournir une photo d'elle-même prise en direct au moment de l'inscription ; (e) n'effectuer qu'une seule candidature ; (f) accepter le présent règlement. Les mineures ne sont pas admises.</p>
+
+    <h4>Article 3 – Inscription et validation</h4>
+    <p>L'inscription est gratuite. La candidate renseigne son identité, son âge, sa ville, ses coordonnées et prend une photo en direct. Chaque candidature est examinée par l'Organisateur. Seules les candidatures validées sont publiées sur le site et peuvent recevoir des votes. L'Organisateur peut refuser, suspendre ou retirer toute candidature non conforme (informations fausses, photo non conforme ou non personnelle, contenu inapproprié, fraude, comportement contraire à l'esprit du Concours), sans que cela n'ouvre droit à une indemnité.</p>
+
+    <h4>Article 4 – Les votes</h4>
+    <p>Le public peut voter pour la candidate de son choix. Un (1) vote est vendu <strong data-cfg="votePriceCDF">2 250 CDF</strong> ou <strong data-cfg="votePriceUSD">1 USD</strong>. Des packs de votes sont proposés pour envoyer plusieurs votes en un seul paiement. Le paiement s'effectue par mobile money (Orange Money, M-Pesa, Airtel Money) via un prestataire de paiement tiers. Les votes sont ajoutés à la candidate choisie après confirmation du paiement par le prestataire. La candidate bénéficiaire est choisie par le votant avant le paiement ; une erreur de choix ne peut pas être corrigée après paiement. Le nombre de votes n'est pas limité.</p>
+
+    <h4>Article 5 – Aucun remboursement</h4>
+    <p>Tout vote payé est définitif, non remboursable, non échangeable et non transférable d'une candidate à une autre. Seule exception : si le compte du votant a été débité sans que les votes soient crédités, ou débité deux fois pour une même commande, à la suite d'une erreur technique avérée. Le votant doit alors contacter l'Organisateur sous 72 heures avec sa référence de transaction et la preuve de paiement. Après vérification, les votes manquants sont crédités ou le montant en double est remboursé.</p>
+
+    <h4>Article 6 – Classement et désignation des gagnantes</h4>
+    <p>Le classement est établi <strong>uniquement</strong> d'après le nombre de votes validés. Il n'y a ni jury, ni tirage au sort, ni intervention du hasard. À la clôture des votes, fixée au <strong data-cfg="votingEnd">—</strong>, les trois (3) candidates ayant le plus de votes sont déclarées gagnantes : première, deuxième et troisième. En cas d'égalité, la candidate qui a atteint ce total en premier (horodatage du dernier vote pris en compte) est classée devant l'autre.</p>
+
+    <h4>Article 7 – Cagnotte et répartition des gains</h4>
+    <p>Les « recettes nettes » sont le total des paiements de votes encaissés (en CDF et en USD, les montants en USD étant convertis en CDF au taux en vigueur à la clôture), après déduction des frais de paiement mobile money, estimés à environ <span data-cfg="feePercent">2,5 %</span>. Les recettes nettes sont réparties ainsi : <strong data-cfg="organizerShare">50 %</strong> reviennent à l'Organisateur (frais d'organisation, technique, promotion) et <strong data-cfg="poolShare">50 %</strong> constituent la cagnotte des gagnantes. La cagnotte est partagée entre les trois gagnantes : première <strong data-cfg="share1">50 %</strong>, deuxième <strong data-cfg="share2">30 %</strong>, troisième <strong data-cfg="share3">20 %</strong> de la cagnotte.</p>
+    <p><em>Exemple :</em> pour 1 000 000 CDF de recettes nettes, l'Organisateur reçoit 500 000 CDF et la cagnotte est de 500 000 CDF, soit 250 000 CDF pour la première, 150 000 CDF pour la deuxième et 100 000 CDF pour la troisième. Les gains dépendent des recettes réelles du Concours ; aucun montant minimum n'est garanti.</p>
+
+    <h4>Article 8 – Versement des gains</h4>
+    <p>Après la clôture, l'Organisateur vérifie la cohérence des votes et l'identité des gagnantes. Les gains sont versés par mobile money sur le numéro indiqué par chaque gagnante, dans un délai maximum de 15 jours ouvrables suivant la validation des résultats. Une gagnante qui ne fournit pas les justificatifs demandés ou ne répond pas dans un délai raisonnable peut perdre son droit au gain. Les éventuels impôts ou taxes dus sur les gains sont à la charge des gagnantes.</p>
+
+    <h4>Article 9 – Fraude et sanctions</h4>
+    <p>Sont interdits : les votes automatisés (robots, scripts), l'usage de moyens de paiement frauduleux ou volés, les comptes multiples, la manipulation du classement et toute tentative de contourner le système. L'Organisateur peut annuler les votes suspects, suspendre ou disqualifier toute candidate concernée, et transmettre le dossier aux autorités compétentes. Les votes annulés pour fraude ne sont pas remboursés.</p>
+
+    <h4>Article 10 – Droit à l'image</h4>
+    <p>La candidate garantit que la photo fournie la représente et qu'elle en détient les droits. Elle autorise l'Organisateur à utiliser gratuitement son nom, sa ville, ses photos et les contenus fournis pour présenter le Concours et en faire la promotion (site, réseaux sociaux, supports publicitaires), pendant la durée du Concours et 12 mois après sa clôture.</p>
+
+    <h4>Article 11 – Données personnelles</h4>
+    <p>Les données des candidates (identité, âge, ville, coordonnées, photo) servent à gérer le Concours, valider les candidatures et verser les gains. Les données des votants (nom, email, téléphone facultatif) servent au traitement du paiement et à l'envoi du reçu. Elles ne sont pas vendues. Elles peuvent être traitées par nos prestataires techniques (hébergement, base de données, paiement) uniquement pour fournir le service. Chaque personne peut demander l'accès, la correction ou la suppression de ses données en écrivant à l'adresse de contact : <span data-cfg="contactEmail">contact@missdigitalrdc.com</span>.</p>
+
+    <h4>Article 12 – Responsabilité, report et annulation</h4>
+    <p>L'Organisateur ne peut être tenu responsable des pannes de réseau, des indisponibilités des opérateurs mobile money ou de tout événement hors de son contrôle. Il peut modifier le calendrier ou suspendre le Concours en cas de force majeure. Si l'Organisateur annule définitivement le Concours avant la clôture des votes, les votes payés sont remboursés aux votants sur demande.</p>
+
+    <h4>Article 13 – Nature du Concours</h4>
+    <p>Le Concours est un concours de popularité en ligne. Il n'est ni une loterie, ni un jeu de hasard : la désignation des gagnantes dépend uniquement du nombre de votes validés.</p>
+
+    <h4>Article 14 – Modification du règlement, droit applicable</h4>
+    <p>L'Organisateur peut compléter ou modifier le présent règlement pour des raisons légales ou techniques ; toute modification est publiée sur le site. Le présent règlement est soumis au droit congolais. Tout litige relève des juridictions compétentes de Kinshasa, après tentative de règlement amiable.</p>
+  </template>
+
+  <!-- ===== Scripts ===== -->
+  <noscript>
+    <p style="padding:24px;text-align:center">Miss Digital RDC nécessite JavaScript pour afficher les candidates et enregistrer les votes.</p>
+  </noscript>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/config.js"></script>
+  <script src="/app.js" defer></script>
+</body>
+</html>
