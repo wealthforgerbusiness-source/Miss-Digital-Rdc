@@ -1,5 +1,5 @@
 [build]
-  publish = "public"
+  publish = "."
   functions = "netlify/functions"
 
 [build.environment]
@@ -13,3 +13,34 @@
   from = "/admin"
   to = "/admin.html"
   status = 200
+
+# Fichiers du projet qui ne doivent PAS être visibles par les visiteurs
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/supabase/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify.toml"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package-lock.json"
+  to = "/404.html"
+  status = 404
+  force = true
