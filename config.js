@@ -1,9 +1,3 @@
-/* =========================================================
-   MISS DIGITAL RDC — config.js
-   Configuration PUBLIQUE du site (visible dans le navigateur).
-   ⚠️ Ne mets JAMAIS ici de clé secrète SasPay (sk_live_...)
-      ni la clé "service_role" de Supabase.
-   ========================================================= */
 (function () {
   "use strict";
 
@@ -60,8 +54,8 @@
 
     /* ----- Supabase (clés PUBLIQUES, à remplir à la fin) ----- */
     supabase: {
-      url: "https://VOTRE-PROJET.supabase.co",
-      anonKey: "VOTRE_CLE_ANON_PUBLIQUE"
+      url: "https://jeqcmhpezqocecqxjsny.supabase.co",
+      anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImplcWNtaHBlenFvY2VjcXhqc255Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIxNjcyODksImV4cCI6MjEwNzc0MzI4OX0.y3HRbm2c0pN7O4qFyi7__H5yY05PLRwmuS7hXz1Azc4"
     },
 
     /* ----- Noms côté base de données (doivent correspondre au prompt Supabase) ----- */
