@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Administration – Miss Digital RDC</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#182B5F">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/icons/favicon-48.png">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin.css">
+</head>
+
+<body>
+  <!-- ===== Sprite d'icônes ===== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 24 24"><path d="M2 18l2-11 5 5 3-8 3 8 5-5 2 11z"/><line x1="2" y1="21" x2="22" y2="21"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21.2l7.8-7.7 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  </svg>
+
+  <!-- =====================================================
+       CONNEXION ADMIN
+       ===================================================== -->
+  <main class="login" id="loginView">
+    <div class="login__card">
+      <img src="/assets/logo.png" alt="Miss Digital RDC" width="120" height="120" class="login__logo">
+      <h1>Espace administrateur</h1>
+      <p class="muted">Accès réservé à l'organisation de Miss Digital RDC.</p>
+
+      <form id="adminLoginForm" novalidate>
+        <div class="field">
+          <label for="adminEmail">Email</label>
+          <input type="email" id="adminEmail" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="adminPassword">Mot de passe</label>
+          <input type="password" id="adminPassword" autocomplete="current-password" required>
+        </div>
+        <p class="form-error" id="adminLoginError" role="alert" hidden></p>
+        <button type="submit" class="btn btn--primary btn--block" id="adminLoginBtn">Se connecter</button>
+      </form>
+      <a href="/" class="login__back">← Retour au site</a>
+    </div>
+  </main>
+
+  <!-- =====================================================
+       APPLICATION ADMIN
+       ===================================================== -->
+  <div class="shell" id="appView" hidden>
+
+    <!-- Menu latéral (ordinateur) -->
+    <aside class="side">
+      <a href="/" class="side__brand" target="_blank" rel="noopener">
+        <img src="/assets/icons/icon-192.png" alt="" width="40" height="40">
+        <span>Miss Digital <b>RDC</b><small>Administration</small></span>
+      </a>
+
+      <nav class="side__nav" aria-label="Navigation admin">
+        <button class="side__link is-active" data-tab="overview"><svg class="icon"><use href="#i-grid"/></svg> Vue d'ensemble</button>
+        <button class="side__link" data-tab="applications"><svg class="icon"><use href="#i-users"/></svg> Candidatures <span class="count" data-pending-badge hidden>0</span></button>
+        <button class="side__link" data-tab="orders"><svg class="icon"><use href="#i-card"/></svg> Paiements</button>
+        <button class="side__link" data-tab="earnings"><svg class="icon"><use href="#i-award"/></svg> Gains et répartition</button>
+      </nav>
+
+      <div class="side__foot">
+        <p class="side__user" id="adminUser">—</p>
+        <button class="btn btn--ghost-light btn--block" id="logoutBtn"><svg class="icon"><use href="#i-logout"/></svg> Déconnexion</button>
+      </div>
+    </aside>
+
+    <!-- Contenu -->
+    <div class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="pageTitle">Vue d'ensemble</h1>
+          <p class="topbar__sub" id="phaseInfo">—</p>
+        </div>
+        <div class="topbar__actions">
+          <span class="demo-badge" id="demoBadge" hidden>Mode démo</span>
+          <span class="muted topbar__updated" id="lastUpdate"></span>
+          <button class="btn btn--ghost btn--icon" id="refreshBtn" aria-label="Actualiser"><svg class="icon"><use href="#i-refresh"/></svg><span class="hide-sm">Actualiser</span></button>
+        </div>
+      </header>
+
+      <p class="banner" id="fallbackBanner" hidden>
+        <svg class="icon"><use href="#i-alert"/></svg>
+        <span>Les fonctions de statistiques Supabase sont introuvables : les totaux sont calculés sur les 300 derniers paiements seulement.</span>
+      </p>
+
+      <!-- ========== VUE D'ENSEMBLE ========== -->
+      <section class="tab is-active" data-panel="overview">
+        <div class="top-grid">
+          <article class="card leader" id="leaderCard"></article>
+
+          <article class="card total">
+            <small>Total encaissé (votes payés)</small>
+            <strong id="kpiGross">—</strong>
+            <span class="muted" id="kpiGrossUsd">—</span>
+            <div class="total__rows">
+              <div><span>Paiements réussis</span><b id="kpiOrders">0</b></div>
+              <div><span>En attente</span><b id="kpiOrdersPending">0</b></div>
+              <div><span>Échoués</span><b id="kpiOrdersFailed">0</b></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="kpis">
+          <article class="kpi kpi--fee">
+            <small>Frais mobile money (<span data-cfg="feePercent">2,5 %</span>)</small>
+            <strong id="kpiFee">—</strong>
+          </article>
+          <article class="kpi kpi--net">
+            <small>Recettes nettes</small>
+            <strong id="kpiNet">—</strong>
+          </article>
+          <article class="kpi kpi--me">
+            <small>Ma part (<span data-cfg="organizerShare">50 %</span>)</small>
+            <strong id="kpiOrganizer">—</strong>
+          </article>
+          <article class="kpi kpi--pool">
+            <small>Cagnotte gagnantes (<span data-cfg="poolShare">50 %</span>)</small>
+            <strong id="kpiPool">—</strong>
+          </article>
+          <article class="kpi">
+            <small>Votes au total</small>
+            <strong id="kpiVotes">—</strong>
+          </article>
+          <article class="kpi">
+            <small>Candidates validées</small>
+            <strong id="kpiApproved">—</strong>
+          </article>
+          <article class="kpi kpi--warn">
+            <small>Candidatures à examiner</small>
+            <strong id="kpiPending">—</strong>
+          </article>
+          <article class="kpi">
+            <small>Valeur d'un vote</small>
+            <strong id="kpiPrice">—</strong>
+          </article>
+        </div>
+
+        <div class="two">
+          <article class="card">
+            <div class="card__head"><h2>Encaissements des 14 derniers jours</h2></div>
+            <div class="chart" id="chart" role="img" aria-label="Graphique des encaissements par jour"></div>
+          </article>
+
+          <article class="card">
+            <div class="card__head"><h2>Podium actuel</h2></div>
+            <ol class="podium-list" id="top3"></ol>
+            <p class="muted small">Gains estimés d'après les recettes nettes actuelles. Ils évoluent à chaque vote.</p>
+          </article>
+        </div>
+
+        <article class="card">
+          <div class="card__head">
+            <h2>Classement complet</h2>
+            <span class="muted" id="rankCount"></span>
+          </div>
+          <ol class="rank" id="rankList"></ol>
+        </article>
+      </section>
+
+      <!-- ========== CANDIDATURES ========== -->
+      <section class="tab" data-panel="applications" hidden>
+        <div class="toolbar">
+          <div class="chips" id="appChips" role="group" aria-label="Filtrer par statut">
+            <button class="chip is-active" data-appfilter="pending">À examiner <i data-count="pending">0</i></button>
+            <button class="chip" data-appfilter="approved">Validées <i data-count="approved">0</i></button>
+            <button class="chip" data-appfilter="rejected">Refusées <i data-count="rejected">0</i></button>
+            <button class="chip" data-appfilter="suspended">Suspendues <i data-count="suspended">0</i></button>
+            <button class="chip" data-appfilter="all">Toutes <i data-count="all">0</i></button>
+          </div>
+          <label class="search" for="appSearch">
+            <svg class="icon"><use href="#i-search"/></svg>
+            <input type="search" id="appSearch" placeholder="Nom, ville, téléphone, email…" autocomplete="off">
+          </label>
+        </div>
+        <div class="apps" id="appList"></div>
+      </section>
+
+      <!-- ========== PAIEMENTS ========== -->
+      <section class="tab" data-panel="orders" hidden>
+        <div class="toolbar">
+          <div class="chips" id="orderChips" role="group" aria-label="Filtrer par statut de paiement">
+            <button class="chip is-active" data-orderfilter="all">Tous <i data-ocount="all">0</i></button>
+            <button class="chip" data-orderfilter="paid">Payés <i data-ocount="paid">0</i></button>
+            <button class="chip" data-orderfilter="pending">En attente <i data-ocount="pending">0</i></button>
+            <button class="chip" data-orderfilter="failed">Échoués <i data-ocount="failed">0</i></button>
+          </div>
+          <button class="btn btn--ghost" id="exportOrders"><svg class="icon"><use href="#i-download"/></svg> Exporter (CSV)</button>
+        </div>
+        <article class="card card--flush">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Date</th><th>Votant</th><th>Candidate</th><th class="num">Votes</th><th class="num">Montant</th><th>Statut</th><th>Référence</th><th></th>
+                </tr>
+              </thead>
+              <tbody id="ordersBody"></tbody>
+            </table>
+          </div>
+        </article>
+        <p class="muted small" id="ordersNote"></p>
+      </section>
+
+      <!-- ========== GAINS ========== -->
+      <section class="tab" data-panel="earnings" hidden>
+        <div class="notice notice--info">
+          <svg class="icon"><use href="#i-clock"/></svg>
+          <p>Montants <strong>provisoires</strong> : ils sont recalculés en continu. Ils deviennent définitifs à la clôture des votes (<strong data-cfg="votingEnd">—</strong>).</p>
+        </div>
+
+        <div class="earn-grid" id="earnCards"></div>
+
+        <div class="two">
+          <article class="card">
+            <div class="card__head"><h2>Détail du calcul</h2></div>
+            <table class="table table--calc"><tbody id="calcBody"></tbody></table>
+          </article>
+
+          <article class="card">
+            <div class="card__head"><h2>Exports</h2></div>
+            <p class="muted">Fichiers CSV compatibles Excel.</p>
+            <div class="stack">
+              <button class="btn btn--primary" id="exportWinners"><svg class="icon"><use href="#i-download"/></svg> Les 3 gagnantes (coordonnées + gains)</button>
+              <button class="btn btn--ghost" id="exportCandidates"><svg class="icon"><use href="#i-download"/></svg> Toutes les candidates</button>
+              <button class="btn btn--ghost" id="exportOrders2"><svg class="icon"><use href="#i-download"/></svg> Tous les paiements</button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- Barre de navigation (mobile) -->
+    <nav class="tabbar" aria-label="Navigation admin mobile">
+      <button class="tabbar__btn is-active" data-tab="overview"><svg class="icon"><use href="#i-grid"/></svg><span>Résumé</span></button>
+      <button class="tabbar__btn" data-tab="applications"><svg class="icon"><use href="#i-users"/></svg><span>Candidates</span><i class="dot" data-pending-badge hidden></i></button>
+      <button class="tabbar__btn" data-tab="orders"><svg class="icon"><use href="#i-card"/></svg><span>Paiements</span></button>
+      <button class="tabbar__btn" data-tab="earnings"><svg class="icon"><use href="#i-award"/></svg><span>Gains</span></button>
+    </nav>
+  </div>
+
+  <!-- ===== Agrandir une photo ===== -->
+  <div class="modal" id="photoModal" role="dialog" aria-modal="true" aria-label="Photo de la candidate" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel modal__panel--photo">
+      <button class="modal__close" data-close aria-label="Fermer"><svg class="icon"><use href="#i-x"/></svg></button>
+      <img id="photoBig" alt="Photo de la candidate">
+    </div>
+  </div>
+
+  <!-- ===== Refuser / suspendre ===== -->
+  <div class="modal" id="rejectModal" role="dialog" aria-modal="true" aria-labelledby="rejectTitle" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" data-close aria-label="Fermer"><svg class="icon"><use href="#i-x"/></svg></button>
+      <h2 id="rejectTitle">Refuser la candidature</h2>
+      <p class="muted" id="rejectName">—</p>
+      <div class="field">
+        <label for="rejectReason">Motif (visible par la candidate)</label>
+        <select id="rejectReason">
+          <option value="">Choisir un motif…</option>
+          <option>Photo non conforme (portrait clair et personnel requis)</option>
+          <option>Informations incomplètes ou incohérentes</option>
+          <option>Âge non conforme au règlement</option>
+          <option>Candidature en doublon</option>
+          <option>Contenu inapproprié</option>
+          <option>Non-respect du règlement</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="rejectNote">Précision (facultatif)</label>
+        <textarea id="rejectNote" rows="3" maxlength="200" placeholder="Ex. Merci de renvoyer une photo de face, bien éclairée."></textarea>
+      </div>
+      <p class="form-error" id="rejectError" role="alert" hidden></p>
+      <div class="modal__actions">
+        <button class="btn btn--ghost" data-close>Annuler</button>
+        <button class="btn btn--danger" id="rejectConfirm">Confirmer</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+  <script src="/config.js"></script>
+  <script src="/admin.js" defer></script>
+</body>
+</html>
