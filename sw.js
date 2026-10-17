@@ -6,7 +6,7 @@
    ========================================================= */
 
 /* ⚠️ Change ce numéro à chaque grosse mise à jour pour vider l'ancien cache */
-const VERSION = "mdr-v1";
+const VERSION = "mdr-v2";
 const SHELL_CACHE = VERSION + "-shell";
 const RUNTIME_CACHE = VERSION + "-runtime";
 const MAX_RUNTIME_ENTRIES = 80;
