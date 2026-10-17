@@ -1,12 +1,4 @@
-/* =========================================================
-   MISS DIGITAL RDC — sw.js (Service Worker)
-   - Pages, CSS, JS : réseau d'abord, cache si le réseau est lent/absent
-   - Images, polices : cache d'abord, mise à jour en arrière-plan
-   - JAMAIS en cache : paiements, fonctions Netlify, Supabase, admin
-   ========================================================= */
-
-/* ⚠️ Change ce numéro à chaque grosse mise à jour pour vider l'ancien cache */
-const VERSION = "mdr-v2";
+const VERSION = "mdr-v3";
 const SHELL_CACHE = VERSION + "-shell";
 const RUNTIME_CACHE = VERSION + "-runtime";
 const MAX_RUNTIME_ENTRIES = 80;
