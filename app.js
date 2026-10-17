@@ -1173,10 +1173,16 @@
   /* =========================================================
      12. INTERFACE GÉNÉRALE : nav, scroll, apparitions, PWA
      ========================================================= */
-  function closeNav() {
-    $("#mainNav").classList.remove("is-open");
-    $("#navToggle").setAttribute("aria-expanded", "false");
+  function setNav(open) {
+    $("#mainNav").classList.toggle("is-open", open);
+    var bd = $("#navBackdrop");
+    if (bd) bd.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+    var tg = $("#navToggle");
+    tg.setAttribute("aria-expanded", open ? "true" : "false");
+    tg.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
   }
+  function closeNav() { setNav(false); }
 
   var revealObserver = null;
   function observeReveals(root) {
@@ -1330,7 +1336,7 @@
       var cur = t.closest("[data-currency]");
       if (cur) { setCurrency(cur.getAttribute("data-currency")); return; }
 
-      if (t.closest(".nav__link")) closeNav();
+      if (t.closest(".nav__link") || t.closest("[data-nav-close]")) closeNav();
       if (!t.closest("#mainNav") && !t.closest("#navToggle")) closeNav();
     });
 
@@ -1343,10 +1349,15 @@
     });
 
     /* --- Navigation mobile --- */
-    $("#navToggle").addEventListener("click", function () {
-      var nav = $("#mainNav");
-      var open = nav.classList.toggle("is-open");
-      this.setAttribute("aria-expanded", open ? "true" : "false");
+    $("#navToggle").addEventListener("click", function (e) {
+      e.stopPropagation();
+      setNav(!$("#mainNav").classList.contains("is-open"));
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && $("#mainNav").classList.contains("is-open")) closeNav();
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 860) closeNav();
     });
 
     /* --- Filtres candidates --- */
