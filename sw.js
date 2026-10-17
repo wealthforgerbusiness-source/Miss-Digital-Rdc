@@ -1,4 +1,4 @@
-const VERSION = "mdr-v3";
+const VERSION = "mdr-v4";
 const SHELL_CACHE = VERSION + "-shell";
 const RUNTIME_CACHE = VERSION + "-runtime";
 const MAX_RUNTIME_ENTRIES = 80;
@@ -12,6 +12,7 @@ const SHELL_FILES = [
   "/style.css",
   "/config.js",
   "/app.js",
+  "/supabase-js.min.js",
   "/manifest.webmanifest",
   "/assets/logo.png",
   "/assets/icons/icon-192.png",
