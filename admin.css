@@ -192,7 +192,12 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--n
 .kpi--pool { border-top-color: var(--pink-600); }
 .kpi--warn { border-top-color: var(--warn); }
 
+/* Boutons longs (exports) */
+.stack .btn { max-width: 100%; white-space: normal; height: auto; min-height: 48px; padding-top: 10px; padding-bottom: 10px; line-height: 1.25; text-align: center; }
+
 /* Graphique */
+.two > *, .top-grid > * { min-width: 0; }
+.chart { overflow: hidden; max-width: 100%; }
 .chart svg { width: 100%; height: auto; }
 .chart .bar { fill: var(--navy-600); transition: fill .2s; }
 .chart .bar:hover { fill: var(--pink-600); }
@@ -203,7 +208,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--n
 .chart__empty { padding: 40px 0; text-align: center; color: var(--muted); }
 
 /* Podium et classement */
-.podium-list { display: grid; gap: 10px; margin-bottom: 14px; }
+.podium-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-bottom: 14px; }
 .podium-list li { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 14px; background: var(--bg); }
 .podium-list img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex: none; background: var(--navy-100); cursor: zoom-in; }
 .podium-list .medal { width: 26px; height: 26px; flex: none; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--navy); font-weight: 700; font-size: 14px; }
@@ -338,7 +343,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--n
 }
 
 @media (max-width: 980px) {
-  .top-grid, .two { grid-template-columns: 1fr; }
+  .top-grid, .two { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 900px) {
