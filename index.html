@@ -118,7 +118,6 @@
 
       <nav class="nav" id="mainNav" aria-label="Navigation principale">
         <a href="#candidates" class="nav__link">Candidates</a>
-        <a href="#classement" class="nav__link">Classement</a>
         <a href="#packs" class="nav__link">Packs de votes</a>
         <a href="#gains" class="nav__link">Gains</a>
         <a href="#faq" class="nav__link">FAQ</a>
@@ -184,14 +183,6 @@
             <span class="halo__ring halo__ring--2"></span>
             <img src="/assets/logo.png" alt="Logo Miss Digital RDC" class="halo__logo" width="420" height="420" fetchpriority="high">
           </div>
-          <div class="float-card float-card--leader" id="heroLeader" hidden>
-            <svg class="icon"><use href="#i-crown"/></svg>
-            <div>
-              <small>En tête actuellement</small>
-              <strong id="heroLeaderName">—</strong>
-            </div>
-            <span class="float-card__votes" id="heroLeaderVotes">0</span>
-          </div>
         </div>
       </div>
 
@@ -249,23 +240,6 @@
       </div>
     </section>
 
-    <!-- ===== CLASSEMENT ===== -->
-    <section class="section section--tint" id="classement">
-      <div class="container">
-        <header class="section__head" data-reveal>
-          <p class="eyebrow"><span class="pulse"></span> En direct</p>
-          <h2>Le classement</h2>
-          <p>Les trois candidates en tête. Le classement se met à jour automatiquement.</p>
-        </header>
-
-        <div class="podium" id="podium" aria-live="polite">
-          <div class="podium__skeleton skeleton"></div>
-          <div class="podium__skeleton skeleton"></div>
-          <div class="podium__skeleton skeleton"></div>
-        </div>
-      </div>
-    </section>
-
     <!-- ===== CANDIDATES ===== -->
     <section class="section" id="candidates">
       <div class="container">
@@ -284,7 +258,7 @@
             <option value="">Toutes les villes</option>
           </select>
           <select id="sortSelect" aria-label="Trier">
-            <option value="votes">Plus de votes</option>
+            <option value="random">Ordre aléatoire</option>
             <option value="recent">Plus récentes</option>
             <option value="name">Ordre alphabétique</option>
           </select>
@@ -297,6 +271,12 @@
           <div class="card-skel skeleton"></div>
           <div class="card-skel skeleton"></div>
         </div>
+
+        <nav class="pager" id="candidatesPager" aria-label="Pages des candidates" hidden>
+          <button type="button" class="btn btn--ghost" data-page="prev">&lsaquo; Précédent</button>
+          <span class="pager__info" id="pagerInfo" aria-live="polite"></span>
+          <button type="button" class="btn btn--ghost" data-page="next">Suivant &rsaquo;</button>
+        </nav>
 
         <div class="empty" id="candidatesEmpty" hidden>
           <svg class="icon icon--xl"><use href="#i-heart"/></svg>
@@ -462,7 +442,6 @@
       <nav aria-label="Liens du pied de page">
         <h4>Navigation</h4>
         <a href="#candidates">Candidates</a>
-        <a href="#classement">Classement</a>
         <a href="#packs">Packs de votes</a>
         <a href="#gains">Gains</a>
       </nav>
@@ -750,7 +729,6 @@
 
         <div class="space-stats">
           <div><strong id="spaceVotes">0</strong><span>Votes reçus</span></div>
-          <div><strong id="spaceRank">—</strong><span>Classement</span></div>
         </div>
 
         <div class="field" id="spaceShareBox">
