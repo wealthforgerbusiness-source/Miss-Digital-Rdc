@@ -481,6 +481,15 @@ select {
   background-repeat: no-repeat; background-position: right 14px center;
 }
 textarea { resize: vertical; min-height: 90px; }
+.search input[type="search"] { padding-left: 50px; }
+.search input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+.search .icon { width: 20px; height: 20px; pointer-events: none; z-index: 1; }
+#candidates { scroll-margin-top: 70px; }
+.pager { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 28px; }
+.pager .btn { min-width: 120px; }
+.pager .btn[disabled] { opacity: .4; cursor: not-allowed; }
+.pager__info { color: var(--muted); font-size: 15px; font-variant-numeric: tabular-nums; text-align: center; min-width: 96px; }
+.profile__stats.profile__stats--single { grid-template-columns: 1fr; }
 input:focus, select:focus, textarea:focus { outline: none; border-color: var(--navy-600); box-shadow: 0 0 0 4px rgba(42, 65, 148, .14); }
 input.is-invalid, select.is-invalid, textarea.is-invalid { border-color: var(--danger); box-shadow: 0 0 0 4px rgba(201, 58, 74, .1); }
 input[readonly] { background: var(--tint); }
@@ -572,7 +581,7 @@ input[readonly] { background: var(--tint); }
 .badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; background: var(--warn-bg); color: var(--warn); }
 .badge--ok { background: var(--success-bg); color: var(--success); }
 .badge--rejected { background: var(--danger-bg); color: var(--danger); }
-.space-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+.space-stats { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 16px 0; }
 .space-stats div { padding: 16px; text-align: center; background: var(--tint); border-radius: 16px; }
 .space-stats strong { display: block; font-size: 32px; line-height: 1.1; color: var(--navy); }
 .space-stats span { color: var(--muted); font-size: 14px; }
@@ -642,8 +651,9 @@ input[readonly] { background: var(--tint); }
   .cand-card__body { padding: 12px 12px 14px; }
   .cand-card__vote { --h: 40px; font-size: 15px; padding: 0 10px; }
   .cand-card__heart { width: 40px; height: 40px; }
-  .podium { gap: 8px; }
-  .podium__name { font-size: 14px; }
+  .pager { gap: 8px; }
+  .pager .btn { min-width: 0; padding: 0 14px; }
+  .pager__info { min-width: 0; font-size: 14px; }
   .modal { align-items: flex-end; padding: 0; }
   .modal__panel { width: 100%; max-height: 94dvh; border-radius: 26px 26px 0 0; padding: 26px 18px calc(22px + env(safe-area-inset-bottom)); animation-name: sheetIn; }
   .modal__panel--lg, .modal__panel--profile { width: 100%; }
