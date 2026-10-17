@@ -111,20 +111,35 @@
   <!-- ===== En-tête ===== -->
   <header class="site-header" id="siteHeader">
     <div class="container header__inner">
+      <button class="burger" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNav">
+        <svg class="icon"><use href="#i-menu"/></svg>
+      </button>
       <a href="#accueil" class="brand" aria-label="Miss Digital RDC – accueil">
         <img src="/assets/icons/icon-192.png" alt="" width="44" height="44" class="brand__img">
         <span class="brand__text">Miss Digital <b>RDC</b></span>
       </a>
 
+      <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
       <nav class="nav" id="mainNav" aria-label="Navigation principale">
-        <a href="#candidates" class="nav__link">Candidates</a>
-        <a href="#packs" class="nav__link">Packs de votes</a>
-        <a href="#gains" class="nav__link">Gains</a>
-        <a href="#faq" class="nav__link">FAQ</a>
+        <div class="nav__head">
+          <span class="nav__brand">
+            <img src="/assets/icons/icon-192.png" alt="" width="40" height="40">
+            <span>Miss Digital <b>RDC</b></span>
+          </span>
+          <button type="button" class="nav__close" data-nav-close aria-label="Fermer le menu">
+            <svg class="icon"><use href="#i-x"/></svg>
+          </button>
+        </div>
+        <p class="nav__label">Menu</p>
+        <a href="#candidates" class="nav__link" style="--i:0"><span class="nav__ico"><svg class="icon"><use href="#i-user"/></svg></span>Candidates</a>
+        <a href="#packs" class="nav__link" style="--i:1"><span class="nav__ico"><svg class="icon"><use href="#i-zap"/></svg></span>Packs de votes</a>
+        <a href="#gains" class="nav__link" style="--i:2"><span class="nav__ico"><svg class="icon"><use href="#i-award"/></svg></span>Gains</a>
+        <a href="#faq" class="nav__link" style="--i:3"><span class="nav__ico"><svg class="icon"><use href="#i-chat"/></svg></span>FAQ</a>
         <div class="nav__mobile-actions">
-          <button class="btn btn--primary btn--block" data-open="vote">Voter</button>
+          <button class="btn btn--primary btn--block" data-open="vote"><svg class="icon icon--fill"><use href="#i-heart"/></svg> Voter</button>
           <button class="btn btn--ghost btn--block" data-open="register">Devenir candidate</button>
-          <button class="btn btn--link btn--block" data-open="space">Mon espace candidate</button>
+          <button class="btn btn--link btn--block" data-open="space"><svg class="icon"><use href="#i-user"/></svg> Mon espace candidate</button>
+          <p class="nav__foot"><svg class="icon"><use href="#i-lock"/></svg> Paiement sécurisé par mobile money</p>
         </div>
       </nav>
 
@@ -135,9 +150,6 @@
         <button class="btn btn--ghost hide-mobile" data-open="register">Participer</button>
         <button class="btn btn--primary" data-open="vote">
           <svg class="icon icon--fill"><use href="#i-heart"/></svg> Voter
-        </button>
-        <button class="burger" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNav">
-          <svg class="icon"><use href="#i-menu"/></svg>
         </button>
       </div>
     </div>
