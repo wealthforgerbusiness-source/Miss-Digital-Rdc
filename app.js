@@ -134,6 +134,7 @@
      3. ÉTAT
      ========================================================= */
   var state = {
+    page: 1,
     candidates: [],
     stats: null,
     currency: "CDF",
@@ -315,37 +316,6 @@
     }
   }
 
-  function renderHeroLeader() {
-    var box = $("#heroLeader");
-    var top = state.candidates[0];
-    if (!box) return;
-    if (!top || top.votes < 1) { box.hidden = true; return; }
-    $("#heroLeaderName").textContent = top.name;
-    $("#heroLeaderVotes").textContent = fmt.number(top.votes);
-    box.hidden = false;
-  }
-
-  function renderPodium() {
-    var box = $("#podium");
-    if (!box) return;
-    var top = state.candidates.slice(0, 3);
-    if (!top.length) {
-      box.innerHTML = '<p class="muted" style="grid-column:1/-1;text-align:center">Le classement apparaîtra dès les premières candidatures validées.</p>';
-      return;
-    }
-    box.innerHTML = top.map(function (c, i) {
-      var r = i + 1;
-      return '<div class="podium__slot podium__slot--' + r + '">' +
-        (r === 1 ? icon("crown", "icon--fill podium__crown") : "") +
-        '<div class="podium__avatar" role="button" tabindex="0" data-profile="' + esc(c.id) + '" aria-label="Voir le profil de ' + esc(c.name) + '">' +
-          '<img src="' + esc(c.photo) + '" alt="' + esc(c.name) + '" width="164" height="164">' +
-          '<span class="podium__medal">' + r + "</span></div>" +
-        '<strong class="podium__name">' + esc(c.name) + "</strong>" +
-        '<span class="podium__votes">' + fmt.number(c.votes) + " " + plural(c.votes, "vote", "votes") + "</span>" +
-        '<div class="podium__bar"></div></div>';
-    }).join("");
-  }
-
   function renderCityFilter() {
     var sel = $("#cityFilter");
     if (!sel) return;
@@ -358,6 +328,17 @@
     if (names.indexOf(cur) !== -1) sel.value = cur;
   }
 
+  /* Ordre aléatoire stable pendant la visite : aucun classement public */
+  var viewSeed = String(Math.random());
+  function orderKey(id) {
+    var s = String(id) + viewSeed, h = 2166136261;
+    for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return h >>> 0;
+  }
+  function pageSize() {
+    return window.matchMedia && window.matchMedia("(max-width: 600px)").matches ? 6 : 8;
+  }
+
   function filteredList() {
     var q = norm($("#searchInput").value.trim());
     var city = $("#cityFilter").value;
@@ -367,7 +348,7 @@
     });
     if (sort === "recent") list.sort(function (a, b) { return new Date(b.created || 0) - new Date(a.created || 0); });
     else if (sort === "name") list.sort(function (a, b) { return a.name.localeCompare(b.name, "fr"); });
-    else list.sort(function (a, b) { return a.rank - b.rank; });
+    else list.sort(function (a, b) { return orderKey(a.id) - orderKey(b.id); });
     return list;
   }
 
@@ -375,7 +356,6 @@
     return '<article class="cand-card" style="animation-delay:' + (Math.min(i, 12) * 50) + 'ms">' +
       '<div class="cand-card__media" role="button" tabindex="0" data-profile="' + esc(c.id) + '" aria-label="Voir le profil de ' + esc(c.name) + '">' +
         '<img class="cand-card__img" src="' + esc(c.photo) + '" alt="' + esc(c.name) + '" loading="lazy" width="300" height="400">' +
-        '<span class="cand-card__rank' + (c.rank === 1 ? " cand-card__rank--1" : "") + '">#' + c.rank + "</span>" +
         '<span class="cand-card__votes">' + icon("heart", "icon--fill") + " " + fmt.number(c.votes) + "</span>" +
         '<button class="cand-card__heart" type="button" data-vote-for="' + esc(c.id) + '" data-heart aria-label="Voter pour ' + esc(c.name) + '">' + icon("heart") + "</button>" +
       "</div>" +
@@ -394,6 +374,7 @@
       grid.hidden = true;
       empty.hidden = false;
       count.textContent = "";
+      if ($("#candidatesPager")) $("#candidatesPager").hidden = true;
       return;
     }
     grid.hidden = false;
@@ -402,9 +383,22 @@
     count.textContent = list.length + " " + plural(list.length, "candidate", "candidates") + " affichée" + (list.length > 1 ? "s" : "");
     if (!list.length) {
       grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><h3>Aucun résultat</h3><p>Essayez un autre nom ou une autre ville.</p></div>';
+      if ($("#candidatesPager")) $("#candidatesPager").hidden = true;
       return;
     }
-    grid.innerHTML = list.map(cardHtml).join("");
+    var size = pageSize();
+    var pages = Math.max(1, Math.ceil(list.length / size));
+    state.page = Math.min(Math.max(1, state.page || 1), pages);
+    var start = (state.page - 1) * size;
+    grid.innerHTML = list.slice(start, start + size).map(cardHtml).join("");
+
+    var pager = $("#candidatesPager");
+    if (pager) {
+      pager.hidden = pages <= 1;
+      $("#pagerInfo").textContent = "Page " + state.page + " sur " + pages;
+      pager.querySelector('[data-page="prev"]').disabled = state.page <= 1;
+      pager.querySelector('[data-page="next"]').disabled = state.page >= pages;
+    }
   }
 
   function packPriceLabels(qty) {
@@ -431,8 +425,6 @@
 
   function renderAll() {
     renderStats();
-    renderHeroLeader();
-    renderPodium();
     renderCityFilter();
     renderGrid();
     renderVoteSelect();
@@ -537,8 +529,7 @@
     var c = findCandidate($("#voteCandidateSelect").value);
     if (!c) { box.innerHTML = ""; return; }
     box.innerHTML = '<img class="vote-candidate__img" src="' + esc(c.photo) + '" alt="' + esc(c.name) + '" width="64" height="64">' +
-      "<div><strong>" + esc(c.name) + "</strong><small>" + esc(c.city) + " · " + fmt.number(c.votes) + " " + plural(c.votes, "vote", "votes") +
-      " · #" + c.rank + "</small></div>";
+      "<div><strong>" + esc(c.name) + "</strong><small>" + esc(c.city) + " · " + fmt.number(c.votes) + " " + plural(c.votes, "vote", "votes") + "</small></div>";
   }
 
   function renderVotePacks() {
@@ -719,9 +710,8 @@
           (c.social ? "<span>" + esc(c.social) + "</span>" : "") +
         "</div>" +
         (c.bio ? '<p class="profile__bio">' + esc(c.bio) + "</p>" : "") +
-        '<div class="profile__stats">' +
+        '<div class="profile__stats profile__stats--single">' +
           "<div><strong>" + fmt.number(c.votes) + "</strong><span>" + plural(c.votes, "vote", "votes") + "</span></div>" +
-          "<div><strong>#" + c.rank + "</strong><span>au classement</span></div>" +
         "</div>" +
         '<div class="profile__actions">' +
           '<button class="btn btn--primary btn--lg btn--block" type="button" data-vote-for="' + esc(c.id) + '">' + icon("heart", "icon--fill") + " Voter pour " + esc(c.name.split(" ")[0]) + "</button>" +
@@ -1132,7 +1122,6 @@
       var mine = findCandidate(row.id);
       var votes = mine ? mine.votes : Number(row.votes_count || 0);
       $("#spaceVotes").textContent = fmt.number(votes);
-      $("#spaceRank").textContent = mine ? "#" + mine.rank : "—";
       var link = shareLink(row.id);
       $("#spaceLink").value = link;
       $("#spaceWhatsapp").href = "https://wa.me/?text=" + encodeURIComponent(
@@ -1231,7 +1220,7 @@
           }
         });
       }, { rootMargin: "-45% 0px -50% 0px" });
-      ["candidates", "classement", "packs", "gains", "faq"].forEach(function (id) {
+      ["candidates", "packs", "gains", "faq"].forEach(function (id) {
         var s = document.getElementById(id);
         if (s) io.observe(s);
       });
@@ -1364,10 +1353,25 @@
     var searchTimer;
     $("#searchInput").addEventListener("input", function () {
       clearTimeout(searchTimer);
-      searchTimer = setTimeout(renderGrid, 160);
+      searchTimer = setTimeout(function () { state.page = 1; renderGrid(); }, 160);
     });
-    $("#cityFilter").addEventListener("change", renderGrid);
-    $("#sortSelect").addEventListener("change", renderGrid);
+    $("#cityFilter").addEventListener("change", function () { state.page = 1; renderGrid(); });
+    $("#sortSelect").addEventListener("change", function () { state.page = 1; renderGrid(); });
+    $("#candidatesPager").addEventListener("click", function (e) {
+      var b = e.target.closest("[data-page]");
+      if (!b || b.disabled) return;
+      state.page = (state.page || 1) + (b.getAttribute("data-page") === "next" ? 1 : -1);
+      renderGrid();
+      var top = $("#candidates");
+      if (top) top.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
+    });
+    window.addEventListener("resize", (function () {
+      var t, last = pageSize();
+      return function () {
+        clearTimeout(t);
+        t = setTimeout(function () { var n = pageSize(); if (n !== last) { last = n; state.page = 1; renderGrid(); } }, 200);
+      };
+    })());
 
     /* --- Vote --- */
     $("#voteCandidateSelect").addEventListener("change", function () { renderVoteCandidate(); updateVoteTotal(); mark(this, false); });
